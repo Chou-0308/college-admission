@@ -1,23 +1,28 @@
 /* 대입 자료실 공통 스타일 */
 body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 /* Layout: 단일 읽기 칼럼(요약·분석) → 넓은 탐색기(필터 + 후기 카드). 면접 후기 양식의 '칸'을 모티프로 */
+/* 색 두 벌: 일반 모드(크림색 종이) · 다크 모드. 어떤 모드인지는 <html data-theme>로 정하고, 버튼은 assets/nav.js */
 :root{
-  --bg:#f6f7f9; --paper:#ffffff; --ink:#1b2333; --muted:#5d667a; --line:#dde1e8; --soft:#eef1f6;
-  --accent:#24407a; --accent-soft:#e3e9f5;
-  --pass:#2f7d4f; --pass-bg:#e4f2e9; --wait:#9a6a0c; --wait-bg:#f8eed6; --fail:#b3412e; --fail-bg:#f8e4df; --na:#6b7280; --na-bg:#eceef1;
   --f-body:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif; --f-display:var(--f-body); --f-mono:var(--f-body);
-  --hl:#fff1a8; --em:#c2410c;
-  --band:#24407a; --band-soft:#c9d6ef; --sun:#ffe27a; --on-band:#ffffff; --on-sun:#1b2333;
+}
+/* 일반 모드: 따뜻한 크림색 바탕, 진한 갈색빛 글자, 베이지 선 */
+:root,:root[data-theme="light"]{
+  --bg:#f3efe3; --paper:#fbf9f2; --ink:#26231d; --muted:#666052; --line:#dcd5c4; --soft:#ebe5d5;
+  --accent:#24407a; --accent-soft:#e1e3e6;
+  --pass:#2f7346; --pass-bg:#e2ebd8; --wait:#7f5708; --wait-bg:#f2e4c2; --fail:#a83b28; --fail-bg:#f3dbd0; --na:#655f53; --na-bg:#e7e1d3;
+  --hl:#f6df8f; --em:#b93c0b;
+  --band:#24407a; --band-soft:#cdd5e3; --sun:#f3cf5c; --on-band:#ffffff; --on-sun:#26231d;
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#12161e; --paper:#1a202b; --ink:#e6e9ef; --muted:#9aa3b5; --line:#2c3443; --soft:#202836;
-  --accent:#8fb0ee; --accent-soft:#233252;
-  --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38; --hl:#4d4114; --em:#fb923c; --hl:#5a4a12; --em:#fb923c; --band:#22396b; --band-soft:#34508a; --sun:#e9c046; --on-band:#ffffff; --on-sun:#12161e; color-scheme:dark}}
+/* 다크 모드: 어두운 남색 바탕 */
 :root[data-theme="dark"]{
   --bg:#12161e; --paper:#1a202b; --ink:#e6e9ef; --muted:#9aa3b5; --line:#2c3443; --soft:#202836;
   --accent:#8fb0ee; --accent-soft:#233252;
-  --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38; --hl:#4d4114; --em:#fb923c; --hl:#5a4a12; --em:#fb923c; --band:#22396b; --band-soft:#34508a; --sun:#e9c046; --on-band:#ffffff; --on-sun:#12161e; color-scheme:dark}
+  --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38;
+  --hl:#5a4a12; --em:#fb923c;
+  --band:#22396b; --band-soft:#34508a; --sun:#e9c046; --on-band:#ffffff; --on-sun:#12161e;
+  color-scheme:dark;
+}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:40px 80px}
@@ -298,3 +303,12 @@ footer{border-top:3px solid var(--accent)}
   .cover-art{order:-1;height:132px}
   .cover-tx{padding:24px 20px}
 }
+
+/* ===== 일반 / 다크 모드 전환 버튼 ===== */
+.theme-tg{position:fixed;right:16px;bottom:16px;z-index:30;display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--paper);box-shadow:0 1px 0 var(--line)}
+.theme-tg button{font:inherit;font-size:.8rem;font-weight:700;border:0;background:none;color:var(--muted);padding:7px 13px;cursor:pointer}
+.theme-tg button+button{border-left:1px solid var(--line)}
+.theme-tg button:hover{color:var(--ink);background:var(--soft)}
+.theme-tg button[aria-pressed="true"]{background:var(--band);color:var(--on-band)}
+.theme-tg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+@media print{.theme-tg{display:none}}

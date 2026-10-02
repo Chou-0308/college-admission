@@ -32,3 +32,17 @@ const SITE=[
   // 모바일 가로 메뉴에서 현재 탭이 보이도록
   const on=side.querySelector('ul [aria-current]');if(on&&on.scrollIntoView&&innerWidth<=900)on.parentElement.parentElement.scrollLeft=on.offsetLeft-16;
 })();
+
+// 일반 모드 / 다크 모드 전환 (화면 오른쪽 아래). 고른 모드는 브라우저에 기억
+(function(){
+  const html=document.documentElement;
+  const box=document.createElement('div');
+  box.className='theme-tg';box.setAttribute('role','group');box.setAttribute('aria-label','화면 모드');
+  box.innerHTML='<button type="button" data-t="light">일반 모드</button><button type="button" data-t="dark">다크 모드</button>';
+  const sync=()=>{const t=html.dataset.theme==='dark'?'dark':'light';box.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t?'true':'false'))};
+  box.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+    if(b.dataset.t==='dark')html.dataset.theme='dark';else delete html.dataset.theme;
+    try{localStorage.setItem('theme',b.dataset.t)}catch(err){}
+    sync()});
+  sync();document.body.appendChild(box);
+})();

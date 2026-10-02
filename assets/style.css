@@ -1,10 +1,22 @@
 /* 대입 자료실 공통 스타일 */
 body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 /* Layout: 단일 읽기 칼럼(요약·분석) → 넓은 탐색기(필터 + 후기 카드). 면접 후기 양식의 '칸'을 모티프로 */
-/* 색·간격·글꼴 값은 assets/tokens.css에 있습니다(이 파일보다 먼저 불러옴). 여기서는 글꼴 별칭만 둡니다. */
-:root{--f-body:var(--font-body);--f-display:var(--f-body);--f-mono:var(--f-body);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark}}
-:root[data-theme="dark"]{color-scheme:dark}
+:root{
+  --bg:#f6f7f9; --paper:#ffffff; --ink:#1b2333; --muted:#5d667a; --line:#dde1e8; --soft:#eef1f6;
+  --accent:#24407a; --accent-soft:#e3e9f5;
+  --pass:#2f7d4f; --pass-bg:#e4f2e9; --wait:#9a6a0c; --wait-bg:#f8eed6; --fail:#b3412e; --fail-bg:#f8e4df; --na:#6b7280; --na-bg:#eceef1;
+  --f-body:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif; --f-display:var(--f-body); --f-mono:var(--f-body);
+  --hl:#fff1a8; --em:#c2410c;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12161e; --paper:#1a202b; --ink:#e6e9ef; --muted:#9aa3b5; --line:#2c3443; --soft:#202836;
+  --accent:#8fb0ee; --accent-soft:#233252;
+  --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38; --hl:#4d4114; --em:#fb923c; --hl:#5a4a12; --em:#fb923c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161e; --paper:#1a202b; --ink:#e6e9ef; --muted:#9aa3b5; --line:#2c3443; --soft:#202836;
+  --accent:#8fb0ee; --accent-soft:#233252;
+  --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38; --hl:#4d4114; --em:#fb923c; --hl:#5a4a12; --em:#fb923c; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:40px 80px}

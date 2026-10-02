@@ -6,7 +6,6 @@
 
 ```
 index.html              허브(첫 화면). 계열 카드 목록
-assets/tokens.css       색·간격·글꼴 값(디자인 토큰). 색을 바꾸려면 여기만 고치면 됨
 assets/style.css        모든 페이지가 같이 쓰는 스타일(맑은 고딕 계열)
 assets/nav.js           왼쪽 메뉴(SITE 목록) — 계열·페이지 추가는 여기서
 media/                  미디어·영상 계열
@@ -22,7 +21,6 @@ media/                  미디어·영상 계열
   js/*.js               페이지별 표·그래프 그리는 코드
   data/reviews.js       면접후기 196건 (const D)
   data/2027.js          2027 일정·입결·특성화고·대학 메모 (SCHED, CUTS, SPEC, NOTES, NOTES27)
-design/                 디자인 시스템 문서: 규칙(README), 전체 미리보기(index.html), 컴포넌트별 예시
 .nojekyll               GitHub Pages가 파일을 가공하지 않도록
 ```
 

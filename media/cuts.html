@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>대학 발표 입결 · 미디어·영상 계열</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap shell">
+<aside class="side" id="side" data-root="../" aria-label="페이지 이동"></aside>
+<script src="../assets/nav.js"></script>
+<main class="main">
+
+<section id="cuts">
+  <div class="read">
+    <h2>대학 발표 입결 (2026 학종)</h2>
+    <p class="sec-sub">학생부종합전형 자료집(수도권 33개 대학)에 실린 미디어·영상·콘텐츠·디자인 모집단위입니다. 대학마다 발표 방식이 달라 '지표' 열에 기준을 적었습니다. <b>일반고 학생을 포함한 전체 지원자 결과</b>입니다.</p>
+  </div>
+  <div class="tools static">
+    <div class="row">
+      <input type="search" id="cq" aria-label="입결 검색" placeholder="대학·학과 검색 (예: 미디어커뮤니케이션, 영화)">
+      <div class="seg" id="civ" role="group" aria-label="면접 여부">
+        <button type="button" data-v="" aria-pressed="true">전체</button>
+        <button type="button" data-v="1" aria-pressed="false">면접 있음</button>
+        <button type="button" data-v="0" aria-pressed="false">서류만</button>
+      </div>
+      <span class="count" id="ccnt"></span>
+    </div>
+  </div>
+  <div class="tbl"><table class="cuts">
+    <thead><tr><th>대학</th><th>전형</th><th>모집단위</th><th>인원 26→27</th><th>경쟁률</th><th>지표</th><th>값</th><th>메모</th></tr></thead>
+    <tbody id="ctbody"></tbody>
+  </table></div>
+</section>
+
+</main>
+</div>
+<script src="data/2027.js"></script>
+<script src="media.js"></script>
+<script src="js/cuts.js"></script>
+</body>
+</html>

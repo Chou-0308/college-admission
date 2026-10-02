@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>질문 유형 · 미디어·영상 계열</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap shell">
+<aside class="side" id="side" data-root="../" aria-label="페이지 이동"></aside>
+<script src="../assets/nav.js"></script>
+<main class="main">
+
+<section id="types">
+  <div class="read">
+    <h2>질문 유형 분포</h2>
+    <p class="sec-sub">질문 문장을 키워드로 자동 분류한 결과입니다. 막대를 누르면 해당 유형의 실제 질문 예시가 나옵니다.</p>
+  </div>
+  <div class="chart" id="chart"></div>
+  <div class="samples" id="samples" hidden></div>
+</section>
+
+</main>
+</div>
+<script src="data/reviews.js"></script>
+<script src="media.js"></script>
+<script src="js/questions.js"></script>
+</body>
+</html>

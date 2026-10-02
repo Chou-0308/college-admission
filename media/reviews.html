@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>후기 전체 · 미디어·영상 계열</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap shell">
+<aside class="side" id="side" data-root="../" aria-label="페이지 이동"></aside>
+<script src="../assets/nav.js"></script>
+<main class="main">
+
+<section id="explore">
+  <div class="read">
+    <h2>후기 전체 보기</h2>
+    <p class="sec-sub">카드를 펼치면 면접 절차, 질문과 답변, 합격·불합격 이유, 팁이 원문 순서대로 나옵니다.</p>
+  </div>
+  <div class="tools">
+    <div class="row">
+      
+      <input type="search" id="q" aria-label="후기 검색" placeholder="질문·답변·학과 검색 (예: 딥페이크, 영화과, 꼬리질문)">
+      <select id="fu" aria-label="대학"></select>
+      <select id="fk" aria-label="계열"></select>
+      <select id="fc" aria-label="질문 유형"></select>
+    </div>
+    <div class="row">
+      <div class="seg" id="fr" role="group" aria-label="결과">
+        <button type="button" data-v="" aria-pressed="true">전체</button>
+        <button type="button" data-v="최초합" aria-pressed="false">최초합</button>
+        <button type="button" data-v="충원합" aria-pressed="false">충원합</button>
+        <button type="button" data-v="불합" aria-pressed="false">불합</button>
+      </div>
+      <span class="count" id="cnt"></span>
+      <button type="button" class="clear" id="clr">필터 초기화</button>
+    </div>
+  </div>
+  <div class="list" id="list"></div>
+  <button type="button" class="more" id="more" hidden>더 보기</button>
+</section>
+
+</main>
+</div>
+<script src="data/reviews.js"></script>
+<script src="media.js"></script>
+<script src="js/explorer.js"></script>
+</body>
+</html>

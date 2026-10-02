@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>대학별 방식 · 미디어·영상 계열</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap shell">
+<aside class="side" id="side" data-root="../" aria-label="페이지 이동"></aside>
+<script src="../assets/nav.js"></script>
+<main class="main">
+
+<section id="univ">
+  <div class="read">
+    <h2>대학별 면접 방식</h2>
+    <p class="sec-sub">대학 이름을 누르면 <a href="reviews.html">후기 전체</a> 페이지에서 그 대학 후기만 보입니다. 시간·면접관 수는 후기에 가장 많이 적힌 값입니다.</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>대학</th><th>건수</th><th>결과</th><th>면접 유형</th><th>시간</th><th>면접관</th><th>문항 공개</th><th>후기에 적힌 특징</th></tr></thead>
+    <tbody id="utbody"></tbody>
+  </table></div>
+</section>
+
+</main>
+</div>
+<script src="data/reviews.js"></script>
+<script src="data/2027.js"></script>
+<script src="media.js"></script>
+<script src="js/universities.js"></script>
+</body>
+</html>

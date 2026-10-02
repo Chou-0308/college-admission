@@ -7,16 +7,17 @@ body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){
   --pass:#2f7d4f; --pass-bg:#e4f2e9; --wait:#9a6a0c; --wait-bg:#f8eed6; --fail:#b3412e; --fail-bg:#f8e4df; --na:#6b7280; --na-bg:#eceef1;
   --f-body:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif; --f-display:var(--f-body); --f-mono:var(--f-body);
   --hl:#fff1a8; --em:#c2410c;
+  --band:#24407a; --band-soft:#c9d6ef; --sun:#ffe27a; --on-band:#ffffff; --on-sun:#1b2333;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#12161e; --paper:#1a202b; --ink:#e6e9ef; --muted:#9aa3b5; --line:#2c3443; --soft:#202836;
   --accent:#8fb0ee; --accent-soft:#233252;
-  --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38; --hl:#4d4114; --em:#fb923c; --hl:#5a4a12; --em:#fb923c; color-scheme:dark}}
+  --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38; --hl:#4d4114; --em:#fb923c; --hl:#5a4a12; --em:#fb923c; --band:#22396b; --band-soft:#34508a; --sun:#e9c046; --on-band:#ffffff; --on-sun:#12161e; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#12161e; --paper:#1a202b; --ink:#e6e9ef; --muted:#9aa3b5; --line:#2c3443; --soft:#202836;
   --accent:#8fb0ee; --accent-soft:#233252;
-  --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38; --hl:#4d4114; --em:#fb923c; --hl:#5a4a12; --em:#fb923c; color-scheme:dark}
+  --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38; --hl:#4d4114; --em:#fb923c; --hl:#5a4a12; --em:#fb923c; --band:#22396b; --band-soft:#34508a; --sun:#e9c046; --on-band:#ffffff; --on-sun:#12161e; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:40px 80px}
@@ -228,4 +229,72 @@ a.side-gt:hover{color:var(--accent)}
   .side{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:6px}
   .side-grp.cur{display:contents}
   .side ul{flex-basis:100%}
+}
+
+/* ===== 컬러 테마 (디자인 시스템 Cover: 남색 판 · 노란 칸 · 하늘색 칸 · 먹색 칸 · 결과 막대) ===== */
+/* 왼쪽 메뉴: 남색 판 */
+.side{background:var(--band);color:var(--on-band);padding:18px 12px 20px}
+.side-home{color:var(--on-band);border-bottom:2px solid var(--sun)}
+.side-home::before{content:"";display:inline-block;width:.6em;height:.6em;background:var(--sun);margin-right:.45em;vertical-align:.05em}
+.side-home:hover,.side-home[aria-current]{color:var(--sun)}
+.side-gt{color:rgba(255,255,255,.62)}
+a.side-gt:hover{color:var(--sun)}
+.side ul a{color:rgba(255,255,255,.88)}
+.side ul a:hover{background:rgba(255,255,255,.1);color:#fff}
+.side ul a[aria-current="page"]{background:var(--sun);border-left-color:var(--on-sun);color:var(--on-sun)}
+.side a:focus-visible{outline-color:var(--sun)}
+.side-soon{color:rgba(255,255,255,.62);border-color:rgba(255,255,255,.3)}
+
+/* 페이지 머리띠 */
+.pagehead{position:relative;overflow:hidden;background:var(--band);color:var(--on-band);padding:24px 196px 26px 28px;min-height:136px}
+.pagehead::before{content:"";position:absolute;right:0;top:0;width:128px;height:84px;background:var(--sun)}
+.pagehead::after{content:"";position:absolute;right:0;top:84px;bottom:0;width:128px;background:var(--band-soft)}
+.ph-blk{position:absolute;right:128px;bottom:0;width:56px;height:56px;background:var(--ink)}
+.ph-grp{display:inline-block;background:var(--sun);color:var(--on-sun);font-size:.78rem;font-weight:700;padding:2px 8px}
+.ph-title{display:block;margin-top:12px;font-size:clamp(1.6rem,3.6vw,2.3rem);font-weight:800;line-height:1.25;letter-spacing:-.02em;word-break:keep-all}
+.pagehead+section,.pagehead+header{margin-top:36px}
+
+/* 허브 표지 */
+.cover{display:grid;grid-template-columns:minmax(0,1fr) minmax(140px,36%);background:var(--paper);border:1px solid var(--line);min-height:288px}
+.cover-tx{padding:36px 32px 32px;align-self:end;min-width:0}
+.cover h1{font-size:clamp(2.4rem,5.5vw,3.8rem);line-height:1.05;word-break:keep-all}
+.cover .lede{margin-top:16px}
+.cover-art{display:block;width:100%;height:100%}
+.cover-art .c-band{fill:var(--band)}.cover-art .c-sun{fill:var(--sun)}.cover-art .c-soft{fill:var(--band-soft)}.cover-art .c-ink{fill:var(--ink)}
+.cover-art .c-pass{fill:var(--pass)}.cover-art .c-wait{fill:var(--wait)}.cover-art .c-fail{fill:var(--fail)}
+.cover-art .c-rule{stroke:var(--muted);stroke-width:1;opacity:.5}
+
+/* 본문 강조색 */
+.main section>h2::before,.main section>.read>h2::before{content:"";display:inline-block;width:.5em;height:.5em;background:var(--accent);margin-right:.45em;vertical-align:.12em}
+.strip{border-top:4px solid var(--accent)}
+.strip .v{color:var(--accent)}
+.find{border-top:3px solid var(--accent)}
+th{background:var(--band-soft);color:var(--ink);font-weight:700}
+.keybox{border-top:4px solid var(--sun)}
+.cols h3{border-bottom:3px solid var(--accent)}
+.cardlink{border-top:6px solid var(--accent);transition:background .15s,color .15s}
+.cards>.cardlink:nth-child(3n+2){border-top-color:var(--sun)}
+.cards>.cardlink:nth-child(3n+3){border-top-color:var(--band-soft)}
+a.cardlink:hover{background:var(--band);border-color:var(--band);color:var(--on-band)}
+a.cardlink:hover p,a.cardlink:hover .m{color:rgba(255,255,255,.82)}
+.cardlink.soon{border-top-color:var(--line)}
+footer{border-top:3px solid var(--accent)}
+
+@media (max-width:900px){
+  .side{margin-inline:-20px;padding:14px 20px 12px;margin-bottom:0}
+  .side{border-bottom:3px solid var(--sun);margin-top:-20px}
+  .side-home{border:0;color:rgba(255,255,255,.75)}
+  .side-home::before{display:none}
+  .side-grp.cur .side-gt{color:#fff}
+  .side ul a{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+  .side ul a[aria-current="page"]{background:var(--sun);border-color:var(--sun);color:var(--on-sun)}
+  .pagehead{margin-inline:-20px;padding:20px 92px 22px 20px;min-height:112px}
+  .pagehead::before{width:56px;height:44px}
+  .pagehead::after{top:44px;width:56px}
+  .ph-blk{right:56px;width:28px;height:28px}
+}
+@media (max-width:720px){
+  .cover{grid-template-columns:minmax(0,1fr)}
+  .cover-art{order:-1;height:132px}
+  .cover-tx{padding:24px 20px}
 }

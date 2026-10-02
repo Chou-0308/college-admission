@@ -260,14 +260,22 @@ a.side-gt:hover{color:var(--sun)}
 .pagehead+section,.pagehead+header{margin-top:36px}
 
 /* 허브 표지 */
-.cover{display:grid;grid-template-columns:minmax(0,1fr) minmax(140px,36%);background:var(--paper);border:1px solid var(--line);min-height:288px}
+.cover{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,44%);background:var(--paper);border:1px solid var(--line);min-height:288px}
 .cover-tx{padding:36px 32px 32px;align-self:end;min-width:0}
 .cover h1{font-size:clamp(2.4rem,5.5vw,3.8rem);line-height:1.05;word-break:keep-all}
 .cover .lede{margin-top:16px}
-.cover-art{display:block;width:100%;height:100%}
-.cover-art .c-band{fill:var(--band)}.cover-art .c-sun{fill:var(--sun)}.cover-art .c-soft{fill:var(--band-soft)}.cover-art .c-ink{fill:var(--ink)}
-.cover-art .c-pass{fill:var(--pass)}.cover-art .c-wait{fill:var(--wait)}.cover-art .c-fail{fill:var(--fail)}
-.cover-art .c-rule{stroke:var(--muted);stroke-width:1;opacity:.5}
+.cover-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;min-width:0}
+.tile{display:flex;flex-direction:column;justify-content:flex-end;min-height:132px;padding:16px 18px;text-decoration:none;min-width:0}
+.tile .tv{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:800;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile .tv small{font-size:.42em;font-weight:700;margin-left:3px;letter-spacing:0}
+.tile .tl{font-size:.84rem;font-weight:700;margin-top:8px;word-break:keep-all}
+.tile .tl::after{content:" →"}
+.tile:hover .tl{text-decoration:underline;text-underline-offset:3px}
+.tile:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.t-band{background:var(--band);color:var(--on-band)}
+.t-sun{background:var(--sun);color:var(--on-sun)}
+.t-soft{background:var(--band-soft);color:var(--ink)}
+.t-plain{background:var(--soft);color:var(--ink)}
 
 /* 본문 강조색 */
 .main section>h2::before,.main section>.read>h2::before{content:"";display:inline-block;width:.5em;height:.5em;background:var(--accent);margin-right:.45em;vertical-align:.12em}
@@ -300,7 +308,7 @@ footer{border-top:3px solid var(--accent)}
 }
 @media (max-width:720px){
   .cover{grid-template-columns:minmax(0,1fr)}
-  .cover-art{order:-1;height:132px}
+  .tile{min-height:96px;padding:14px 16px}
   .cover-tx{padding:24px 20px}
 }
 

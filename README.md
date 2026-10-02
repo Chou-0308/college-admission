@@ -1,54 +1,45 @@
-경기도교육청 진로진학 자료집을 계열별로 정리한 정적 사이트 「대입 자료실」의 디자인 시스템입니다. 면접 후기 양식의 **칸**을 모티프로 한, 읽기 중심의 차분한 자료 페이지를 만듭니다. 장식보다 숫자와 출처가 먼저 보이게 하세요.
+# 대입 자료실
 
-## 내용 원칙 (Content)
+경기도교육청 진로진학 자료집을 계열별로 정리한 정적 사이트입니다. GitHub Pages로 그대로 올릴 수 있습니다.
 
-- **존댓말 평서문**으로 씁니다: "…입니다", "…하세요". 감탄·과장·이모지는 쓰지 않습니다.
-- **숫자를 앞에** 둡니다: "194건 중 130건(67%)이 서류기반 면접입니다." 비율에는 기준 건수를 함께 적습니다.
-- **출처를 숨기지 않습니다.** 페이지 끝 `footer`에 자료집 이름과 판독 방식, "지원 전 대학 요강 확인" 문장을 둡니다. 카드·표에는 원본 쪽번호(`p.34`)를 남깁니다.
-- 오해할 수 있는 숫자에는 경고를 붙입니다: `<b class="warn">합격선으로 읽으면 안 됩니다</b>`.
-- 한국어 제목은 `word-break: keep-all`로 어절 단위 줄바꿈합니다. 구분점은 가운뎃점 ` · `, 범위는 `→`, 학과 묶음은 `〈 〉`.
-- 원 자료는 학교 계정 전용입니다. 외부 공개 범위를 확인하라는 안내를 지우지 마세요.
+## 폴더 구조
 
-## 색 (Color)
+```
+index.html              허브(첫 화면). 계열 카드 목록
+assets/tokens.css       색·간격·글꼴 값(디자인 토큰). 색을 바꾸려면 여기만 고치면 됨
+assets/style.css        모든 페이지가 같이 쓰는 스타일(맑은 고딕 계열)
+assets/nav.js           왼쪽 메뉴(SITE 목록) — 계열·페이지 추가는 여기서
+media/                  미디어·영상 계열
+  index.html            개요(숫자 요약 + 핵심 정리 + 세부 페이지 카드)
+  schedule.html         2027 면접 일정
+  special.html          특성화고졸업자 특별전형
+  cuts.html             대학 발표 입결(2026 학종)
+  questions.html        질문 유형 분포
+  universities.html     대학별 면접 방식
+  reviews.html          후기 전체(필터·검색)
+  prep.html             준비법 + 공식 자료
+  media.js              공통 상수, 출처 문구
+  js/*.js               페이지별 표·그래프 그리는 코드
+  data/reviews.js       면접후기 196건 (const D)
+  data/2027.js          2027 일정·입결·특성화고·대학 메모 (SCHED, CUTS, SPEC, NOTES, NOTES27)
+design/                 디자인 시스템 문서: 규칙(README), 전체 미리보기(index.html), 컴포넌트별 예시
+.nojekyll               GitHub Pages가 파일을 가공하지 않도록
+```
 
-- 바탕은 `bg`, 그 위에 올라오는 면(표·카드·띠·입력창)은 `paper`, 조용한 채움(표 머리·호버·막대 트랙)은 `soft`.
-- 본문은 `ink`, 보조 글(eyebrow·lede·라벨·출처)은 `muted`. 둘 다 `bg`·`paper`·`soft` 위에서 두 테마 모두 4.5:1 이상입니다.
-- 브랜드 색은 남색 `accent` 하나입니다. 링크, 막대, 포커스 링, 현재 메뉴, 카드 위 3px 선에만 씁니다. 그 뒤 옅은 채움은 `accent-soft`.
-- 결과 색은 의미가 고정입니다: 최초합 `pass`, 충원합 `wait`, 불합 `fail`, 미기재 `na` — 각각 `-bg` 위에. **반드시 글자(최초합 등)와 함께** 쓰고 색만으로 구분하지 마세요. 라이트 테마의 `pass`·`wait`·`na` 알약은 4.1–4.4:1로 AA에 조금 못 미치며, 원본 값을 그대로 두었습니다.
-- 강조 형광펜은 `hl`, 주의 강조는 `em`(주황). 둘 다 문단당 한두 번만.
-- 테두리는 `line` 1px 헤어라인. 구획은 그림자가 아니라 선으로 나눕니다.
-- 다크 테마는 같은 이름의 토큰이 바뀌는 방식입니다(`[data-theme="dark"]`, 또는 시스템 다크 모드). 색을 직접 적지 말고 항상 토큰을 쓰세요.
+## 자주 하는 작업
 
-## 글자 (Type)
+- **강조 표시**: 본문에서 `<b>…</b>`는 형광펜 강조, `<b class="warn">…</b>`는 주의(주황색)입니다.
+- **숫자·일정 고치기**: `media/data/2027.js`에서 해당 줄만 고치면 됩니다. 각 배열 위에 열 순서가 주석으로 적혀 있습니다.
+- **세부 페이지 추가**: `media/` 안에 새 HTML을 만들고 `assets/nav.js`의 `SITE`에 한 줄 추가하면 모든 페이지 왼쪽 메뉴에 나타납니다. 새 페이지는 기존 페이지(예: `cuts.html`)를 복사해 본문만 바꾸면 메뉴 틀이 그대로 따라옵니다. 개요 페이지(`media/index.html`)의 카드도 하나 추가하세요.
+- **새 계열 추가**: `media/` 폴더를 통째로 복사해 이름을 바꾸고(예: `it/`), 데이터와 문구를 바꾼 뒤 허브 `index.html`의 카드 틀(주석)을 채우고, `assets/nav.js`의 `SITE`에서 `soon:true` 항목을 `dir`·`pages`로 바꿉니다.
+- **링크로 필터 공유**: `media/reviews.html?u=건국대학교(서울)` · `?c=시사·AI·미디어 이슈 견해` · `?r=불합` · `?q=딥페이크` 처럼 주소에 붙이면 그 조건으로 열립니다.
 
-- 글꼴은 **고딕 하나**로 통일합니다: `body` 패밀리(맑은 고딕 → Apple SD Gothic Neo → Noto Sans KR). Noto Sans KR 400/500/700/800은 Google Fonts에서 불러옵니다. 숫자 칸은 `font-variant-numeric: tabular-nums`.
-- 제목: `h1`(800, 최대 2.7rem, 화면에 따라 1.9rem까지 줄어듦), `h2` 1.45rem, `h3` 1.05rem — 모두 700, 자간 -0.02em, 행간 1.3.
-- 본문은 `body` 15px / 1.7. 섹션 부제는 `sec-sub`(muted, 최대 65ch), 표는 `table`, 작은 설명은 `caption`, 라벨은 `eyebrow`·`th`, 알약·태그는 `chip`.
-- 글 단은 `width-read`(760px)를 넘기지 않습니다. 표·탐색기만 넓게 씁니다.
+## GitHub Pages 올리기
 
-## 간격·모서리·레이아웃
+1. 새 저장소를 만들고 이 폴더의 파일을 모두 올립니다(`.nojekyll` 포함).
+2. 저장소 Settings → Pages → Source: `Deploy from a branch`, Branch: `main` / `(root)`.
+3. 1~2분 뒤 `https://<계정>.github.io/<저장소>/` 로 열립니다.
 
-- 페이지: 좌우 `space-page-x`, 위 `space-page-top`, 아래 `space-page-bottom`. 섹션 사이 `space-section`.
-- 카드·상자 안쪽은 `space-card-y` × `space-card-x`, 카드 격자 간격 `space-grid`, 목록 간격 `space-list`, 칩 간격 `space-chip`.
-- 모서리는 작게: 막대 `radius-xs`, 태그·메모 `radius-sm`, 입력·버튼 `radius-md`, 알약·점프 링크만 `radius-pill`. 카드와 표는 각진 모서리(0)입니다.
-- 셸: 왼쪽 메뉴 `width-side` + 본문, 사이 `space-shell-gap`, 최대 `width-shell`. `bp-nav`(900px) 아래에서 메뉴는 가로 알약 줄이 됩니다.
-- 상태: 호버는 `soft` 또는 `accent-soft` 채움, 눌림(`aria-pressed`)·현재(`aria-current`)는 `accent`. 포커스는 모든 컨트롤에 `accent` 2px 실선 outline — `paper`·`bg` 위에서 두 테마 모두 7:1 이상. `prefers-reduced-motion`이면 전환 효과를 끕니다.
+## 공개 범위 주의
 
-## 컴포넌트
-
-모든 컴포넌트는 `components/bundle.css`(원본 `assets/style.css`)의 클래스 마크업입니다. JS 라이브러리가 아니라 HTML 패턴이므로, 각 README의 마크업을 그대로 쓰고 데이터만 채우세요.
-
-- 틀: `PageHeader`, `SideNav`(메뉴는 `nav.js`의 `SITE` 한 곳에서만 고침)
-- 숫자·데이터: `StatStrip`, `Findings`, `BarChart`, `DataTable`, `ReviewCard`, `KeyBox`, `Badges`
-- 탐색: `FilterBar`, `CardLink`, `JumpLinks`
-- 글: `TipColumns`, `QuestionList`, `Emphasis`
-
-## 아이콘·이미지
-
-아이콘·로고·사진을 쓰지 않습니다. 사이트 이름은 `h1`/`.side-home`의 글자로만 표시합니다. 상태는 아이콘 대신 알약(`Badges`)의 글자로, 방향은 `→`·`›` 같은 문자로 나타냅니다. 새 페이지에 장식 이미지나 이모지를 넣지 마세요.
-
-## 동기화되지 않은 것
-
-- 원본 CSS의 `--f-display`, `--f-mono`는 `--f-body`의 별칭이라 별도 토큰이 아니라 `bundle.css`에서 `--font-body`로 연결했습니다.
-- 글꼴 파일·로고는 저장소에 없습니다(맑은 고딕은 시스템 글꼴, Noto Sans KR은 Google Fonts).
-- 컴포넌트는 빌드할 라이브러리가 없어 원본 마크업을 손으로 옮긴 **정적 예시**입니다(데이터는 예시값). 출처: `index.html`, `assets/nav.js`, `media/*.html`, `media/js/*.js`.
+GitHub Pages 사이트는 **저장소를 비공개로 해도 주소를 아는 누구나 볼 수 있습니다**(접근 제한은 GitHub Enterprise Cloud 조직에서만 가능). 원 자료집은 학교 계정 전용이므로, 올리기 전에 공개해도 되는 범위인지 확인하세요.

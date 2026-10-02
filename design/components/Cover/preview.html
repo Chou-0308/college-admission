@@ -1,0 +1,35 @@
+<!doctype html><html lang="ko" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cover · 대입 자료실</title>
+<link rel="stylesheet" href="../../../assets/tokens.css"><link rel="stylesheet" href="../../../assets/style.css"></head><body>
+<style>
+html,body{margin:0;height:100%}
+.cv{position:relative;width:960px;height:288px;background:var(--bg);overflow:hidden}
+.cv svg{position:absolute;inset:0}
+.accent{fill:var(--accent)}.ink{fill:var(--ink)}.hl{fill:var(--hl)}.soft{fill:var(--accent-soft)}
+.pass{fill:var(--pass)}.wait{fill:var(--wait)}.fail{fill:var(--fail)}
+.rule{stroke:var(--muted);stroke-width:1;opacity:.5}
+.bar{rx:var(--radius-xs)}
+.tx{position:absolute;left:40px;bottom:36px;max-width:440px}
+.nm{font-family:var(--font-body);font-weight:800;font-size:84px;line-height:.95;letter-spacing:-.02em;color:var(--ink);margin:0;word-break:keep-all}
+.tg{font-family:var(--font-body);font-size:14px;color:var(--muted);margin:16px 0 0}
+</style>
+<div class="cv">
+<svg width="960" height="288" viewBox="0 0 960 288" aria-hidden="true">
+<!-- blocks: accent 232×176 slab, hl 168×112 (bleeds right), accent-soft 168×176, ink 112×112; result bar pass/wait/fail 8px (radius-xs)
+     arrangement: flush modular grid of form cells (면접 후기 양식의 칸), square corners like the site's cards and tables
+     pattern: hairline rules — editorial, "borders not shadows": four 1px rules extend the cell grid past the blocks
+     steps & radii: cells on a 56px section step (space-section) and 16px card step; radius 0 for cells, radius-xs on the result bar -->
+<rect class="accent" x="560" y="0" width="232" height="176"/>
+<rect class="hl" x="792" y="0" width="168" height="112"/>
+<rect class="soft" x="792" y="112" width="168" height="176"/>
+<rect class="ink" x="560" y="176" width="112" height="112"/>
+<rect class="pass bar" x="688" y="232" width="48" height="8"/>
+<rect class="wait bar" x="736" y="232" width="16" height="8"/>
+<rect class="fail bar" x="752" y="232" width="24" height="8"/>
+<line class="rule" x1="504" y1="56" x2="560" y2="56"/>
+<line class="rule" x1="504" y1="176" x2="560" y2="176"/>
+<line class="rule" x1="504.5" y1="0" x2="504.5" y2="288"/>
+<line class="rule" x1="672" y1="208" x2="792" y2="208"/>
+</svg>
+<div class="tx"><p class="nm">대입 자료실</p><p class="tg">진로진학 자료집을 계열별로 — 숫자와 출처가 먼저 보이게.</p></div>
+</div>
+</body></html>

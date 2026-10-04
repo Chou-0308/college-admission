@@ -1,0 +1,9 @@
+# 맥·윈도우를 오가며 작업해도 줄바꿈이 섞이지 않도록 저장소에는 항상 LF로 저장
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.hwp binary
+*.xlsx binary

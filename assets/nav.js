@@ -1,7 +1,8 @@
 // 왼쪽 메뉴 (모든 페이지 공통)
 // ▶ 계열이나 페이지를 추가하면 SITE만 고치면 됩니다. 준비 중인 계열은 soon:true
+// ▶ 같은 계열이라도 학종(면접)과 실기는 폴더를 나눕니다: media/ = 학종·면접, silgi/ = 실기
 const SITE=[
- {name:"미디어·영상 계열",dir:"media/",pages:[
+ {name:"미디어·영상 · 학종·면접",dir:"media/",pages:[
   ["index.html","개요"],
   ["schedule.html","2027 면접 일정"],
   ["special.html","특성화고 전형"],
@@ -10,6 +11,9 @@ const SITE=[
   ["universities.html","대학별 방식"],
   ["reviews.html","후기 전체"],
   ["prep.html","준비법·공식 자료"],
+ ]},
+ {name:"영화·영상 · 실기",dir:"silgi/",pages:[
+  ["index.html","개요"],
  ]},
  {name:"IT·소프트웨어 계열",soon:true},
  {name:"보건·의료정보 계열",soon:true},

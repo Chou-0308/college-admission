@@ -1,29 +1,30 @@
 // 후기 탐색기
-// 주소 뒤에 ?u=대학&c=질문유형&k=계열&r=결과&q=검색어 를 붙이면 필터가 걸린 채로 열립니다.
-const state={q:'',u:'',k:'',c:'',r:'',limit:30};
+// 주소 뒤에 ?u=대학&c=질문유형&k=계열&y=전형&r=결과&q=검색어 를 붙이면 필터가 걸린 채로 열립니다.
+const state={q:'',u:'',k:'',y:'',c:'',r:'',limit:30};
 (function(){
   const P=new URLSearchParams(location.search);
-  ['q','u','k','c','r'].forEach(k=>{const v=P.get(k);if(v)state[k]=v});
+  ['q','u','k','y','c','r'].forEach(k=>{const v=P.get(k);if(v)state[k]=v});
   const us=[...new Set(D.map(r=>r.u))].sort((a,b)=>a.localeCompare(b,'ko'));
   $('#fu').innerHTML='<option value="">전체 대학</option>'+us.map(u=>`<option>${esc(u)}</option>`).join('');
   $('#fk').innerHTML='<option value="">전체 계열</option>'+GRPS.map(g=>`<option>${g}</option>`).join('');
+  $('#fy').innerHTML='<option value="">전체 전형</option>'+TRACKS.map(g=>`<option>${g}</option>`).join('');
   $('#fc').innerHTML='<option value="">전체 질문 유형</option>'+CATS.map(g=>`<option>${g}</option>`).join('');
-  const sync=()=>{$('#q').value=state.q;['u','k','c'].forEach(k=>$('#f'+k).value=state[k]);
+  const sync=()=>{$('#q').value=state.q;['u','k','y','c'].forEach(k=>$('#f'+k).value=state[k]);
     $('#fr').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===state.r?'true':'false'))};
   sync();
   $('#q').addEventListener('input',e=>{state.q=e.target.value.trim();state.limit=30;render()});
-  ['u','k','c'].forEach(k=>$('#f'+k).addEventListener('change',e=>{state[k]=e.target.value;state.limit=30;render()}));
+  ['u','k','y','c'].forEach(k=>$('#f'+k).addEventListener('change',e=>{state[k]=e.target.value;state.limit=30;render()}));
   $('#fr').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;state.r=b.dataset.v;state.limit=30;sync();render()});
-  $('#clr').onclick=()=>{Object.assign(state,{q:'',u:'',k:'',c:'',r:'',limit:30});sync();render()};
+  $('#clr').onclick=()=>{Object.assign(state,{q:'',u:'',k:'',y:'',c:'',r:'',limit:30});sync();render()};
   $('#more').onclick=()=>{state.limit+=30;render()};
 })();
 function hl(s){s=esc(s);if(!state.q)return s;const t=esc(state.q).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return s.replace(new RegExp(t,'gi'),m=>`<mark>${m}</mark>`)}
 function render(){
   // 지금 걸린 필터를 주소에 남겨 두면 그 주소로 바로 공유할 수 있습니다
-  const P=new URLSearchParams();['u','c','k','r','q'].forEach(k=>{if(state[k])P.set(k,state[k])});
+  const P=new URLSearchParams();['u','c','k','y','r','q'].forEach(k=>{if(state[k])P.set(k,state[k])});
   try{history.replaceState(null,'',P.toString()?'?'+P:location.pathname)}catch(e){}
   const q=state.q.toLowerCase();
-  const res=D.filter(r=>(!state.u||r.u===state.u)&&(!state.k||r.k===state.k)&&(!state.r||r.r===state.r)
+  const res=D.filter(r=>(!state.u||r.u===state.u)&&(!state.k||r.k===state.k)&&(!state.y||track(r)===state.y)&&(!state.r||r.r===state.r)
     &&(!state.c||r.qa.some(x=>x[2]===state.c))
     &&(!q||[r.u,r.d,r.t,r.why,r.tip,r.pr,...r.qa.flat()].join(' ').toLowerCase().includes(q)));
   $('#cnt').textContent=`${res.length}건`;

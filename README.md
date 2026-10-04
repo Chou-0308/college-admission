@@ -22,6 +22,8 @@ media/                  미디어·영상 계열
   data/reviews.js       면접후기 196건 (const D)
   data/2027.js          2027 일정·입결·특성화고·대학 메모 (SCHED, CUTS, SPEC, NOTES, NOTES27)
 .nojekyll               GitHub Pages가 파일을 가공하지 않도록
+.gitignore              맥(.DS_Store)·윈도우(Thumbs.db) 숨김 파일이 올라가지 않도록
+.gitattributes          맥·윈도우를 오가도 줄바꿈이 섞이지 않도록
 ```
 
 ## 자주 하는 작업
@@ -32,6 +34,12 @@ media/                  미디어·영상 계열
 - **세부 페이지 추가**: `media/` 안에 새 HTML을 만들고 `assets/nav.js`의 `SITE`에 한 줄 추가하면 모든 페이지 왼쪽 메뉴에 나타납니다. 새 페이지는 기존 페이지(예: `cuts.html`)를 복사해 본문만 바꾸면 메뉴 틀이 그대로 따라옵니다. 개요 페이지(`media/index.html`)의 카드도 하나 추가하세요.
 - **새 계열 추가**: `media/` 폴더를 통째로 복사해 이름을 바꾸고(예: `it/`), 데이터와 문구를 바꾼 뒤 허브 `index.html`의 카드 틀(주석)을 채우고, `assets/nav.js`의 `SITE`에서 `soon:true` 항목을 `dir`·`pages`로 바꿉니다.
 - **링크로 필터 공유**: `media/reviews.html?u=건국대학교(서울)` · `?c=시사·AI·미디어 이슈 견해` · `?r=불합` · `?q=딥페이크` 처럼 주소에 붙이면 그 조건으로 열립니다.
+
+## 여러 컴퓨터에서 작업하기 (맥·윈도우, GitHub Desktop)
+
+- 작업 시작 전에 **Fetch origin → Pull origin**을 눌러 다른 컴퓨터에서 한 작업을 먼저 받습니다.
+- 작업이 끝나면 **Commit to main → Push origin**까지 해야 다른 컴퓨터에서 받을 수 있습니다.
+- GitHub 웹에서 "Add files via upload"로 파일을 올리면 같은 이름의 파일이 통째로 덮어써집니다. 되도록 GitHub Desktop으로 올리세요.
 
 ## GitHub Pages 올리기
 

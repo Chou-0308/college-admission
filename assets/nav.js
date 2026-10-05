@@ -14,6 +14,13 @@ const SITE=[
  ]},
  {name:"영화·영상 · 실기",dir:"silgi/",pages:[
   ["index.html","개요"],
+  ["types.html","대학별 실기 유형"],
+  ["exams.html","기출·연습 문제"],
+  ["reviews.html","합격 복기"],
+  ["method.html","분석·작문 방법"],
+  ["interview.html","면접 대비"],
+  ["glossary.html","용어 사전"],
+  ["history.html","영화사"],
  ]},
  {name:"IT·소프트웨어 계열",soon:true},
  {name:"보건·의료정보 계열",soon:true},

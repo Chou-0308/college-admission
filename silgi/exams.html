@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>기출·연습 문제 · 영화·영상 실기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=20261005">
+</head>
+<body>
+<div class="wrap shell">
+<aside class="side" id="side" data-root="../" aria-label="페이지 이동"></aside>
+<script src="../assets/nav.js?v=20261005"></script>
+<main class="main">
+<div class="pagehead"><span class="ph-grp">영화·영상 · 실기</span><p class="ph-title">기출·연습 문제</p><span class="ph-blk" aria-hidden="true"></span></div>
+
+<header class="read">
+  <p class="eyebrow">2017~2026학년도 기출 · 수업 연습 세트</p>
+  <h1>실제로 나온 문제로 연습하기</h1>
+  <p class="lede">대학별 기출 제시어·제시문·사진과 그때 나온 면접 질문을 모았습니다. 위에서 형식을 고르면 기출과 연습 세트에서 문제를 하나 뽑고 <b>실제 시험 시간</b>으로 타이머를 맞춰 줍니다.</p>
+</header>
+
+<section id="practice">
+  <div class="read">
+    <h2>연습 문제 뽑기</h2>
+    <p class="sec-sub">형식을 고르고 ‘문제 뽑기’를 누르세요. 타이머는 이 화면에서만 돌아갑니다. 말하기 연습은 휴대폰으로 녹화해 다시 보면 좋습니다.</p>
+  </div>
+  <div class="gen" aria-live="polite">
+    <div class="seg" id="pf" role="group" aria-label="연습 형식"></div>
+    <div class="prompt" id="pp">형식을 고르고 문제를 뽑으세요</div>
+    <p class="rule" id="pr"></p>
+    <div class="ctrl">
+      <button type="button" class="btn" id="pick">문제 뽑기</button>
+      <button type="button" class="btn ghost" id="tgo" disabled>타이머 시작</button>
+      <button type="button" class="btn ghost" id="trs" disabled>처음으로</button>
+      <span class="timer" id="tm" role="timer" aria-label="남은 시간">--:--</span>
+      <span class="small" id="tl"></span>
+    </div>
+  </div>
+</section>
+
+<section id="past">
+  <div class="read">
+    <h2>대학별 기출</h2>
+    <p class="sec-sub">‘복기’·‘자가진단’이라고 적힌 연도는 수험생이 기억해 적은 것이라 문구가 정확하지 않을 수 있습니다. 서울예대·동아방송예대 이미지는 출제된 영화 제목만 적었습니다.</p>
+    <nav class="jump" id="jump" aria-label="대학 바로가기"></nav>
+  </div>
+  <div id="exlist"></div>
+</section>
+
+</main>
+</div>
+<script src="data/exams.js?v=20261005"></script>
+<script src="silgi.js?v=20261005"></script>
+<script src="js/exams.js?v=20261005"></script>
+</body>
+</html>

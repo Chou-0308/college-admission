@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>면접 대비 · 영화·영상 실기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=20261005">
+</head>
+<body>
+<div class="wrap shell">
+<aside class="side" id="side" data-root="../" aria-label="페이지 이동"></aside>
+<script src="../assets/nav.js?v=20261005"></script>
+<main class="main">
+<div class="pagehead"><span class="ph-grp">영화·영상 · 실기</span><p class="ph-title">면접 대비</p><span class="ph-blk" aria-hidden="true"></span></div>
+
+<header class="read">
+  <p class="eyebrow">복기 속 질문 분석 · 면접지 · 질문 리스트</p>
+  <h1>실기 뒤에 붙는 면접, 무엇을 묻나</h1>
+  <p class="lede">영화과 실기 면접은 실기 답안에 대한 꼬리질문이 끝나면 거의 같은 질문으로 넘어갑니다. <b>찍어 본 영화, 좋아하는 감독, 영화를 하려는 이유, 앞으로 찍고 싶은 영화</b>. 복기에 적힌 질문을 세어 보고, 미리 채워 둘 면접지와 구술 단골 개념을 정리했습니다.</p>
+  <nav class="jump" aria-label="이 페이지 안 바로가기">
+    <a href="#freq">자주 나온 질문</a><a href="#sheet">면접지 만들기</a><a href="#concepts">구술 단골 개념</a><a href="#lists">질문 리스트</a><a href="#tips">공통 팁</a><a href="#roadmap">준비 순서</a>
+  </nav>
+</header>
+
+<section id="freq">
+  <div class="read">
+    <h2>복기에 나온 질문 유형</h2>
+    <p class="sec-sub" id="freq-sub"></p>
+  </div>
+  <div class="chart read" id="chart"></div>
+  <div class="samples read" id="samples"></div>
+</section>
+
+<section id="sheet" class="read">
+  <h2>면접지 만들기</h2>
+  <p class="sec-sub">합격생 한 명이 실제로 준비한 ‘면접지’의 항목입니다(답은 빼고 질문만 옮김). 항목마다 <b>30초 안에 말할 답과 근거가 될 작품·경험</b>을 적어 두세요. 체크 표시는 이 브라우저에만 저장됩니다.</p>
+  <p class="prog" id="prog"></p>
+  <div id="checks"></div>
+  <p class="small"><button type="button" class="clear" id="ckclr">체크 모두 지우기</button></p>
+</section>
+
+<section id="concepts" class="read">
+  <h2>구술 단골 개념</h2>
+  <p class="sec-sub">서울예대·대진대·서일대·청주대 구술에서 나왔거나 구술 대비 문답에 들어 있던 개념입니다. 누르면 <a href="glossary.html">용어 사전</a>에서 뜻을 찾아 줍니다. ‘A와 B의 차이’ 형태로 묻는 경우가 많습니다.</p>
+  <div class="qchips" id="cchips"></div>
+</section>
+
+<section id="lists" class="read">
+  <h2>질문 리스트</h2>
+  <p class="sec-sub">수업에서 쓰던 면접 질문 리스트입니다. 영화과 지원자도 공통 질문은 꼭 준비하세요.</p>
+  <div class="cols">
+    <div><h3>공통</h3><ul>
+      <li>1분 안에 자기소개</li><li>우리 학과에 지원한 이유</li><li>자신을 동물로, 색으로 비유한다면</li><li>전공 교과 중 가장 자신 있던 과목과 이유</li><li>학교생활에서 가장 즐거웠던 순간과 힘들었던 순간</li><li>가장 존경하는 인물과 이유</li><li>책 한 권을 추천한다면</li><li>대학생이 가져야 할 덕목 두 가지</li><li>자신의 꿈과 목표</li><li>우리가 당신을 뽑아야 하는 이유 세 가지</li>
+    </ul></div>
+    <div><h3>영화과</h3><ul>
+      <li>가장 좋아하는 영화</li><li>단편영화를 만들어 본 경험과 맡은 역할</li><li>앞으로 하고 싶은 포지션</li><li>가장 좋아하는 감독과 이유</li><li>가장 최근에 본 영화와 별점</li><li>장르란 무엇인가</li><li>영상 제작의 3단계</li><li>카메라·편집을 다룰 수 있는가</li><li>학교에서 했던 가장 나쁜 일</li><li>면접장에서 벌어질 수 있는 가장 좋은 일과 나쁜 일</li><li>OTT란 무엇이며 영화산업은 어떻게 대비해야 하나</li>
+    </ul></div>
+  </div>
+  <div class="cols" style="margin-top:24px">
+    <div><h3>미디어커뮤니케이션(참고)</h3><ul>
+      <li>미디어 발달의 장점과 단점</li><li>커뮤니케이션이란, 소통을 정의한다면</li><li>오늘 본 기억에 남는 뉴스</li><li>가장 좋아하는 영상과 가장 별로였던 영상</li><li>미디어의 세계화란, 우리나라 미디어의 강점</li>
+    </ul></div>
+    <div><h3>복기에서 나온 돌발 질문</h3><ul>
+      <li>좋아하는 색과 그 색이 처음 각인된 기억</li><li>본인이 가장 기쁠 때, 가장 무서운 것</li><li>자신의 평판, 부정적인 평판</li><li>친구 많아요? 고집 세서 없을 것 같은데</li><li>공부 잘해요?</li><li>모든 사람이 엔딩 크레딧을 보며 행복할까</li><li>본인의 결핍은</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="tips" class="read">
+  <h2>공통 팁</h2>
+  <p class="sec-sub">영화과 입시 특강 자료, 서울예대 대비 자료, 복기에서 반복된 조언을 묶었습니다.</p>
+  <div class="find"><ul>
+    <li><span class="k">내 작품</span><div><p><b>로그라인 한 문장</b>, <b>1분 줄거리</b>, 그리고 숫자(러닝타임, 씬 수, 제작비, 상영·수상)를 따로 준비. ‘로그라인 말고 줄거리로’, ‘이별 결심은 몇 씬쯤?’, ‘그 장면 어떻게 찍었어?’까지 묻습니다.</p></div></li>
+    <li><span class="k">좋아하는 감독</span><div><p>한국·외국으로 나눠 준비하고, 이유는 <b>작품과 장면</b>으로. 그 감독의 <b>다른 작품</b>을 물었을 때 막힌 사례가 있습니다. 감독 둘 사이의 연결점(예: 둘 다 실화를 다룸)을 만들어 두면 좋습니다.</p></div></li>
+    <li><span class="k">학교 작품</span><div><p>지원 학교의 졸업영화제·상영회·온라인 공개작을 보고 갈 것. 서경대·성결대·대진대·성균관대에서 ‘우리 학교 작품 본 것’, ‘학교 영화제 출품했나’를 물었습니다.</p></div></li>
+    <li><span class="k">솔직함</span><div><p>할 수 있는 것과 없는 것은 솔직하게. 못 본 영화는 못 봤다고 말하고 아는 쪽으로 연결. 인터넷에 흔한 예시는 다른 수험생과 겹쳐 금방 드러납니다.</p></div></li>
+    <li><span class="k">생기부·전문교과</span><div><p>생기부에서 질문을 미리 찾을 것. 특성화고라면 영상콘텐츠·방송콘텐츠·광고콘텐츠 제작 같은 전문교과에서 무엇을 배웠는지.</p></div></li>
+    <li><span class="k">시사 질문</span><div><p><b>AI와 영화감독</b>, <b>OTT와 극장</b>, <b>1인 미디어와 영화</b>가 반복. 입장 한 문장 → 근거(기사·사례) → ‘감독으로서 나는’으로 맺기.</p></div></li>
+    <li><span class="k">마지막 말</span><div><p>장점 하나 + 그 장점을 보여 준 경험 하나 + 학교와의 연결. 15초, 10초로 줄여 말하는 연습도.</p></div></li>
+    <li><span class="k">긴장할 때</span><div><p>심호흡하고 양해를 구해도 됩니다(‘잠시 생각할 시간을 주시겠습니까’). 질문을 잘못 들었으면 다시 묻기. 끝까지 답을 만들어 내는 순발력을 봅니다.</p></div></li>
+    <li><span class="k">태도</span><div><p>서울예대는 자신감 있는 태도를 특히 봅니다. 감독은 스태프를 이끌고 내 시나리오를 피칭해 제작비를 받아내는 사람이기 때문. 그리고 특강의 마지막 말: 시간 약속, 끈기, 체력. <b>버텨라.</b></p></div></li>
+  </ul></div>
+</section>
+
+<section id="roadmap" class="read">
+  <h2>준비 순서</h2>
+  <p class="sec-sub">수업 자료의 단계별 과제를 바탕으로 정리한 순서입니다. 각 단계는 이 섹션의 페이지와 이어집니다.</p>
+  <ol class="howto">
+    <li><span><b>기초 용어</b> · 연출·촬영·편집·음향 용어를 내 말로 설명할 수 있게. <a href="glossary.html">용어 사전</a></span></li>
+    <li><span><b>영화 사조</b> · 주요 사조마다 영화 3편 이상을 보고 ‘그 시대에 왜 그런 영화가 나왔는지’ 설명하기. <a href="history.html">영화사</a></span></li>
+    <li><span><b>고전 내러티브</b> · 3막 구조와 플롯 포인트를 이해하고, 그 틀을 깨고 싶은 지점까지 생각하기. <a href="method.html#writing">작문</a></span></li>
+    <li><span><b>장르</b> · 장르 3개를 골라 장르마다 3편 이상, 공식·관습·아이콘을 예시로 정리.</span></li>
+    <li><span><b>감독</b> · 작가 감독 3명의 필모그래피를 모두 보고, 전체를 관통하는 주제와 좋았던 연출·서사·정서 정리.</span></li>
+    <li><span><b>국가와 시대</b> · 나라 3곳을 골라 감독 3명씩, 그 나라의 역사가 영화의 정서에 어떻게 스며 있는지.</span></li>
+    <li><span><b>유형 연습</b> · 지원 대학 유형으로 시간을 맞춰 연습. <a href="exams.html">기출·연습 문제</a></span></li>
+    <li><span><b>면접지와 모의면접</b> · 위 면접지를 채우고 녹화해 다시 보기. <a href="reviews.html">합격 복기</a>로 실제 흐름 익히기.</span></li>
+  </ol>
+</section>
+
+</main>
+</div>
+<script src="data/boki.js?v=20261005"></script>
+<script src="data/jindan.js?v=20261005"></script>
+<script src="silgi.js?v=20261005"></script>
+<script src="js/interview.js?v=20261005"></script>
+</body>
+</html>

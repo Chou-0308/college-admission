@@ -327,3 +327,76 @@ footer{border-top:3px solid var(--accent)}
 .theme-tg button[aria-pressed="true"]{background:var(--band);color:var(--on-band)}
 .theme-tg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 @media print{.theme-tg{display:none}}
+
+/* ===== 영화·영상 실기(silgi/) ===== */
+/* 대학별 실기 카드 */
+.card.s{border-left-color:var(--accent)}
+.card.s.old{border-left-color:var(--line)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.steps li b{font-size:.88rem}
+@media (max-width:640px){.steps li{grid-template-columns:1fr;gap:2px}}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px}
+.facts>div{background:var(--soft);padding:8px 10px;border-radius:3px;font-size:.84rem;min-width:0}
+.facts>div>span{display:block;font-size:.74rem;color:var(--muted);font-weight:700}
+.tips{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:.9rem}
+.src-line{font-size:.76rem;color:var(--muted)}
+.gtag{display:inline-block;font-size:.72rem;padding:1px 7px;border-radius:3px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.gtag.k-old{background:var(--na-bg);color:var(--na)}
+/* 기출 */
+.exu{margin-top:28px}
+.exu>h3{font-size:1.15rem;padding-bottom:6px;border-bottom:3px solid var(--accent);margin-bottom:12px}
+.exy{background:var(--paper);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px;display:grid;gap:10px}
+.exy .yh{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-weight:700}
+.exy ul{margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.9rem}
+.exy .lab{font-size:.76rem;font-weight:700;color:var(--muted);margin-bottom:2px}
+.qchips{display:flex;flex-wrap:wrap;gap:6px}
+.qchips span{font-size:.82rem;background:var(--soft);border-radius:3px;padding:2px 8px}
+/* 연습 문제 뽑기 */
+.gen{background:var(--paper);border:1px solid var(--line);border-top:6px solid var(--sun);padding:18px 20px;display:grid;gap:14px}
+.gen .prompt{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;line-height:1.35;word-break:keep-all;min-height:1.4em}
+.gen .prompt .w{display:inline-block;background:var(--band);color:var(--on-band);padding:2px 12px;margin:2px 4px 2px 0}
+.gen .rule{font-size:.88rem;color:var(--muted)}
+.gen .ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:inherit;font-size:.9rem;font-weight:700;padding:9px 16px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);border-radius:4px;cursor:pointer}
+.btn.ghost{background:var(--paper);color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.timer{font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--accent);min-width:5ch}
+.timer.done{color:var(--fail)}
+/* 방법 페이지 */
+.howto{counter-reset:h;list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.howto li{counter-increment:h;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;font-size:.92rem}
+.howto li::before{content:counter(h);display:grid;place-items:center;width:28px;height:28px;background:var(--band);color:var(--on-band);font-weight:800;font-size:.85rem}
+.sheet{width:100%;min-width:0;font-size:.88rem}
+.sheet th{width:150px;white-space:normal}
+.sheet td{color:var(--muted)}
+.dont{border-left:6px solid var(--fail)!important}
+.do{border-left:6px solid var(--pass)!important}
+.ex{font-size:.88rem;background:var(--soft);padding:10px 12px;border-radius:3px;margin-top:8px}
+.ex b{background:none!important}
+/* 용어 사전 */
+.terms{display:grid;gap:0;margin-top:12px;border-top:3px solid var(--accent)}
+.term{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.term .tn{font-weight:800}
+.term .ta{display:block;font-size:.76rem;color:var(--muted);font-weight:400}
+.term .td{font-size:.92rem}
+.term .te{display:block;font-size:.84rem;color:var(--muted);margin-top:4px}
+.term .te::before{content:"예 · ";font-weight:700}
+@media (max-width:640px){.term{grid-template-columns:1fr;gap:4px}}
+/* 영화사 타임라인 */
+.tline{list-style:none;margin:0;padding:0;border-left:3px solid var(--accent);display:grid;gap:0}
+.tline li{position:relative;padding:12px 0 12px 22px}
+.tline li::before{content:"";position:absolute;left:-8px;top:19px;width:13px;height:13px;background:var(--sun);border:2px solid var(--band)}
+.tline .yr{font-size:.8rem;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
+.tline h3{margin:2px 0 4px}
+.tline p{font-size:.9rem}
+.tline .wk{display:block;font-size:.82rem;color:var(--muted);margin-top:4px}
+/* 면접지 체크리스트 */
+.check{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:6px}
+.check label{display:flex;gap:8px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);padding:8px 10px;font-size:.88rem;cursor:pointer}
+.check input{margin-top:4px;accent-color:var(--accent)}
+.check input:checked+span{color:var(--muted);text-decoration:line-through}
+.prog{font-size:.85rem;color:var(--muted)}
+/* 버튼 묶음이 좁은 화면에서 세로로 찌그러지지 않게 줄 바꿈 */
+.seg{flex-wrap:wrap;max-width:100%}
+.seg button{white-space:nowrap;border-top:1px solid var(--line);margin-top:-1px}

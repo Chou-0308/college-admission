@@ -1,10 +1,10 @@
 // 면접 대비: 복기 질문 유형 집계, 면접지 체크리스트(브라우저에만 저장), 구술 단골 개념
 (function(){
   // ---- 질문 유형 집계(QT는 silgi.js) ----
-  const withQ=RECAPS.filter(r=>r.qa.length);
-  const allQ=withQ.flatMap(r=>r.qa.map(x=>({q:x[0],u:r.u,y:r.y,src:r.src})));
-  const rows=QT.map(([nm,re])=>{const hit=withQ.filter(r=>r.qa.some(x=>re.test(x[0])));
-    return {nm,n:hit.length,ex:allQ.filter(x=>re.test(x.q))}}).sort((a,b)=>b.n-a.n);
+  const withQ=RECAPS.map(r=>Object.assign({},r,{qa:r.qa.filter(x=>x[1])})).filter(r=>r.qa.length);
+  const allQ=withQ.flatMap(r=>{const cs=qcats(r.qa);return r.qa.map((x,i)=>({q:x[0],u:r.u,y:r.y,src:r.src,c:cs[i]}))});
+  const rows=QT.map(([nm])=>{const hit=withQ.filter(r=>qcats(r.qa).some(c=>c.includes(nm)));
+    return {nm,n:hit.length,ex:allQ.filter(x=>x.c.includes(nm))}}).sort((a,b)=>b.n-a.n);
   $('#freq-sub').innerHTML=`질문이 적힌 복기·자가진단 <b>${withQ.length}건</b>, 질문 <b>${allQ.length}개</b>를 유형별로 묶었습니다. 막대는 그 유형의 질문이 한 번이라도 나온 기록 수입니다(키워드로 자동 분류해 일부 어긋날 수 있음). 막대를 누르면 실제 질문을 보여 줍니다.`;
   const max=Math.max(...rows.map(r=>r.n));
   let sel=rows[0].nm;

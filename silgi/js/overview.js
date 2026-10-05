@@ -10,9 +10,9 @@
   $('#c-terms').textContent=`${TERMS.length}개 용어를 한두 문장으로. 촬영·편집·음향·연출·시나리오·장르·제작.`;
 
   // ---- 질문 유형 상위 ----
-  const withQ=RECAPS.filter(r=>r.qa.length);
+  const withQ=RECAPS.map(r=>Object.assign({},r,{qa:r.qa.filter(x=>x[1])})).filter(r=>r.qa.length);
   const top=QT.filter(([nm])=>nm!=='실기 답안 꼬리질문')
-    .map(([nm,re])=>({nm,n:withQ.filter(r=>r.qa.some(x=>re.test(x[0]))).length})).sort((a,b)=>b.n-a.n).slice(0,3);
+    .map(([nm])=>({nm,n:withQ.filter(r=>qcats(r.qa).some(c=>c.includes(nm))).length})).sort((a,b)=>b.n-a.n).slice(0,3);
   $('#f-q').innerHTML=`질문이 적힌 기록 ${withQ.length}건 가운데 ${top.map(t=>`<b>${esc(t.nm)} ${t.n}건(${Math.round(t.n/withQ.length*100)}%)</b>`).join(', ')}. 실기 답안의 꼬리질문이 끝나면 거의 이 순서로 넘어갑니다.`;
 
   // ---- 면접후기 자료집 속 실기 전형 ----

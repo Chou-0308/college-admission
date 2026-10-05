@@ -400,3 +400,11 @@ footer{border-top:3px solid var(--accent)}
 /* 버튼 묶음이 좁은 화면에서 세로로 찌그러지지 않게 줄 바꿈 */
 .seg{flex-wrap:wrap;max-width:100%}
 .seg button{white-space:nowrap;border-top:1px solid var(--line);margin-top:-1px}
+/* 복기 카드 안 구획 */
+.rvs{display:grid;gap:6px;min-width:0}
+.rvh{font-size:.78rem;font-weight:800;color:var(--accent);letter-spacing:.02em;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.rvh .small{font-weight:500;margin-left:4px}
+.para{font-size:.92rem;line-height:1.75}
+.para p+p{margin-top:8px}
+/* 휴대폰에서는 필터 묶음이 화면 위에 붙어 따라오지 않게(긴 카드를 가리지 않도록) */
+@media (max-width:640px){.tools{position:static}}

@@ -7,7 +7,7 @@ body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){
 }
 /* 일반 모드: 따뜻한 크림색 바탕, 진한 갈색빛 글자, 베이지 선 */
 :root,:root[data-theme="light"]{
-  --bg:#f3efe3; --paper:#fbf9f2; --ink:#26231d; --muted:#666052; --line:#dcd5c4; --soft:#ebe5d5;
+  --bg:#f3efe3; --paper:#fbf9f2; --ink:#26231d; --muted:#4f4a3f; --line:#dcd5c4; --soft:#ebe5d5;
   --accent:#24407a; --accent-soft:#e1e3e6;
   --pass:#2f7346; --pass-bg:#e2ebd8; --wait:#7f5708; --wait-bg:#f2e4c2; --fail:#a83b28; --fail-bg:#f3dbd0; --na:#655f53; --na-bg:#e7e1d3;
   --hl:#f6df8f; --em:#b93c0b;
@@ -16,7 +16,7 @@ body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){
 }
 /* 다크 모드: 어두운 남색 바탕 */
 :root[data-theme="dark"]{
-  --bg:#12161e; --paper:#1a202b; --ink:#e6e9ef; --muted:#9aa3b5; --line:#2c3443; --soft:#202836;
+  --bg:#12161e; --paper:#1a202b; --ink:#e6e9ef; --muted:#b4bccb; --line:#2c3443; --soft:#202836;
   --accent:#8fb0ee; --accent-soft:#233252;
   --pass:#6fcf97; --pass-bg:#1d3326; --wait:#e4b45a; --wait-bg:#3a2f17; --fail:#f08c78; --fail-bg:#3d2320; --na:#a3aab8; --na-bg:#272d38;
   --hl:#5a4a12; --em:#fb923c;
@@ -408,3 +408,26 @@ footer{border-top:3px solid var(--accent)}
 .para p+p{margin-top:8px}
 /* 휴대폰에서는 필터 묶음이 화면 위에 붙어 따라오지 않게(긴 카드를 가리지 않도록) */
 @media (max-width:640px){.tools{position:static}}
+
+/* ===== 가독성: 본문 크기·간격, 질문(Q)과 답(A) 구분 ===== */
+body{font-size:16px;line-height:1.8}
+.lede{font-size:1.04rem;line-height:1.8}
+.sec-sub{font-size:.94rem;line-height:1.75}
+.find li{padding:18px 0}
+.find p+p{margin-top:8px}
+.para{font-size:.98rem;line-height:1.85}
+.para p+p{margin-top:10px}
+.tips{font-size:.95rem;gap:8px;line-height:1.75}
+.rvs{gap:10px}
+.rvh{font-size:.84rem}
+.body{gap:20px;padding:8px 20px 20px}
+.proc{font-size:.88rem;line-height:1.7;padding:10px 12px}
+/* 질문과 답: Q·A 표시를 붙이고, 답은 옅은 칸에 넣어 한 쌍으로 보이게 */
+.qa{gap:16px}
+.qa>div{display:grid;gap:6px}
+.q,.a{position:relative;padding-left:32px}
+.q{font-size:1rem;line-height:1.6}
+.a{font-size:.96rem;line-height:1.8;margin-top:0;border-left:0;background:var(--soft);border-radius:4px;padding:9px 14px 9px 42px}
+.q::before,.a::before{position:absolute;left:0;top:.2em;width:22px;height:22px;border-radius:4px;display:grid;place-items:center;font-size:.74rem;font-weight:800;line-height:1}
+.q::before{content:"Q";background:var(--band);color:var(--on-band)}
+.a::before{content:"A";left:10px;top:10px;background:var(--sun);color:var(--on-sun)}

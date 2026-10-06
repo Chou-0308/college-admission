@@ -35,7 +35,7 @@
         <div class="facts">${facts.map(([a,b])=>`<div><span>${a}</span>${esc(b)}</div>`).join('')}</div>
         ${s.rule?`<div class="proc">유의사항 · ${esc(s.rule)}</div>`:''}
         ${s.tips.length?`<div><div class="lab q">복기·자료에서 나온 점</div><ul class="tips">${s.tips.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:''}
-        ${n?`<p class="small"><a href="reviews.html?u=${encodeURIComponent(key(s.n))}">${esc(s.n)} 복기 ${n}건 보기 →</a> · <a href="exams.html#${id(s.n)}">기출 문제 보기 →</a></p>`:''}
+        ${n?`<p class="small"><a href="${LNK.reviews}?u=${encodeURIComponent(key(s.n))}">${esc(s.n)} 복기 ${n}건 보기 →</a> · <a href="${LNK.exams}#${id(s.n)}">기출 문제 보기 →</a></p>`:''}
       </div></details>`;
   }
   function render(){

@@ -1,6 +1,14 @@
 // 왼쪽 메뉴 (모든 페이지 공통)
 // ▶ 계열이나 페이지를 추가하면 SITE만 고치면 됩니다. 준비 중인 계열은 soon:true
 // ▶ 같은 계열이라도 학종(면접)과 실기는 폴더를 나눕니다: media/ = 학종·면접, silgi/ = 실기, jeonmun/ = 전문대 면접
+// ▶ 4년제 / 전문대 구분: 전문대학(교육부 분류, 전문대학포털·각 대학 모집요강으로 확인)은 아래 목록에 이름 앞부분을 넣습니다.
+//   4년제 탭(media/, silgi/)은 전문대를 빼고, 전문대 탭(jeonmun/)은 전문대만 보여 줍니다. 페이지의 <html data-scope="jm">가 전문대 탭 표시
+const JM_NAMES=["서울예","동아방송","백석예","백석문화","서일대","계원","대림대","연성대","청강","한국영상","용인예술","경민대","경인여","명지전문","유한대","인덕대","두원","부천대","제주한라","부산경상","부산과학기술","부산보건","울산과학","재능대","전주기전","전주비전","영남이공","영진","대덕대","대전과학기술","구미대","계명문화","국제대","마산대","수성대","창원문성","조선이공","제주관광","충청대","경기과학기술","동서울","백석문화"];
+const isJM=u=>JM_NAMES.some(n=>String(u||'').startsWith(n));
+const SCOPE=document.documentElement.dataset.scope==='jm'?'jm':'4';
+// 배열에서 지금 탭에 맞지 않는 학교 항목을 빼기(f: 항목 → 학교 이름)
+const scopeArr=(a,f)=>{if(!Array.isArray(a))return;for(let i=a.length-1;i>=0;i--)if(isJM(f(a[i]))!==(SCOPE==='jm'))a.splice(i,1)};
+const scopeObj=o=>{if(o&&typeof o==='object')Object.keys(o).forEach(k=>{if(isJM(k)!==(SCOPE==='jm'))delete o[k]})};
 const SITE=[
  {name:"(4년제) 미디어·영상 · 학종·면접",dir:"media/",pages:[
   ["index.html","개요"],
@@ -26,6 +34,10 @@ const SITE=[
   ["index.html","개요"],
   ["table.html","면접 전형표"],
   ["questions.html","면접 문항"],
+  ["hugi.html","면접 후기"],
+  ["silgi.html","실기 유형"],
+  ["silgi-exams.html","실기 기출"],
+  ["silgi-reviews.html","실기 합격 복기"],
  ]},
  {name:"IT·소프트웨어 계열",soon:true},
  {name:"보건·의료정보 계열",soon:true},

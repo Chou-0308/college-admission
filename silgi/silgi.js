@@ -1,6 +1,19 @@
 // 영화·영상 실기 공통: 도우미, 출처 문구 (왼쪽 메뉴는 ../assets/nav.js)
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// 4년제 탭(silgi/)은 4년제 대학만, 전문대 탭(jeonmun/silgi*.html)은 전문대만 남깁니다
+if(typeof SCH!=='undefined')scopeArr(SCH,s=>s.n);
+if(typeof SCH17!=='undefined')scopeArr(SCH17,r=>r[0]);
+if(typeof BK!=='undefined')scopeArr(BK,r=>r.u);
+if(typeof JG!=='undefined')scopeArr(JG,r=>r.u);
+if(typeof EX!=='undefined')scopeArr(EX,e=>e.u);
+if(typeof OPENQ!=='undefined')scopeArr(OPENQ,e=>e.u);
+if(typeof D!=='undefined')scopeArr(D,r=>r.u);
+if(typeof PRACTICE!=='undefined')Object.keys(PRACTICE).forEach(k=>{if(isJM(PRACTICE[k].u)!==(SCOPE==='jm'))delete PRACTICE[k]});
+// 페이지 사이 링크: 전문대 탭에서는 전문대 쪽 페이지로, 학교와 상관없는 페이지는 4년제 실기 탭 것을 씁니다
+const LNK=SCOPE==='jm'
+  ?{types:'silgi.html',exams:'silgi-exams.html',reviews:'silgi-reviews.html',glossary:'../silgi/glossary.html',method:'../silgi/method.html',interview:'../silgi/interview.html'}
+  :{types:'types.html',exams:'exams.html',reviews:'reviews.html',glossary:'glossary.html',method:'method.html',interview:'interview.html'};
 // 합격 복기(BK)와 자가진단(JG)을 한 목록으로. 각 페이지는 필요한 data/*.js만 불러옵니다
 const RECAPS=[
   ...(typeof BK!=='undefined'?BK.map(r=>Object.assign({src:'합격 복기'},r)):[]),

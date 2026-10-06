@@ -482,3 +482,15 @@ h1{font-size:clamp(1.7rem,3.6vw,2.3rem)}
 .totop[hidden]{display:none}
 @media (max-width:900px){.toc{margin-inline:-20px;padding-inline:20px}.toc-l{display:none}}
 @media print{.toc,.totop{display:none}}
+
+/* ===== 대학 공개 문항 (실기 면접 대비) ===== */
+.oq{display:grid;gap:10px}
+.oq-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-bottom:4px}
+.oq-h b{font-size:1.05rem}
+.card.oq-q{border-left-color:var(--sun)}
+.oq-q summary{grid-template-columns:auto 1fr;align-items:start;gap:12px}
+.oq-n{display:grid;place-items:center;width:26px;height:26px;border-radius:4px;background:var(--band);color:var(--on-band);font-weight:800;font-size:.85rem}
+.oq-t{font-weight:700;font-size:1.02rem;line-height:1.6}
+.oq-q .exm{font-size:.9rem;background:var(--soft);border-left:3px solid var(--em);padding:8px 12px;margin:0}
+.oq-tips{margin-top:6px}
+.prompt .pq{margin:0;padding-left:1.4em;display:grid;gap:10px;text-align:left;font-size:1rem;line-height:1.6;font-weight:600}

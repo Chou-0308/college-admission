@@ -2,7 +2,9 @@
 (function(){
   // ---- 연습 문제 뽑기 ----
   const keys=Object.keys(PRACTICE);
-  let fmt=keys[0],left=0,tick=null,phase='',last=-1;
+  // 주소에 ?f=형식 이 있으면 그 형식으로 열기(예: exams.html?f=daejin)
+  const f0=new URLSearchParams(location.search).get('f');
+  let fmt=keys.includes(f0)?f0:keys[0],left=0,tick=null,phase='',last=-1;
   $('#pf').innerHTML=keys.map(k=>`<button type="button" data-v="${k}" aria-pressed="${k===fmt}">${esc(PRACTICE[k].name)}</button>`).join('');
   const mmss=s=>`${String(Math.floor(s/60)).padStart(2,'0')}:${String(Math.floor(s%60)).padStart(2,'0')}`;
   const stop=()=>{clearInterval(tick);tick=null};
@@ -15,7 +17,8 @@
     const P=PRACTICE[fmt];let words;
     // 한예종식은 실제 시험처럼 키워드 11개를 모두 보여 줌
     let i;do{i=Math.floor(Math.random()*P.sets.length)}while(P.sets.length>1&&i===last);last=i;words=P.sets[i];
-    $('#pp').innerHTML=fmt==='dongbang'?`<span class="small">사진 설명</span><br>${esc(words[0])}`
+    $('#pp').innerHTML=fmt==='daejin'?`<ol class="pq">${words.map(w=>`<li>${esc(w)}</li>`).join('')}</ol>`
+      :fmt==='dongbang'?`<span class="small">사진 설명</span><br>${esc(words[0])}`
       :words.map(w=>`<span class="w">${esc(w)}</span>`).join('')+(fmt==='knua'?'<br><span class="small">이 가운데 4개 이상을 골라 쓰세요</span>':'');
     $('#tgo').disabled=false;$('#trs').disabled=false;reset();
   };

@@ -349,6 +349,7 @@ footer{border-top:3px solid var(--accent)}
 .exy{background:var(--paper);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px;display:grid;gap:10px}
 .exy .yh{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-weight:700}
 .exy ul{margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.9rem}
+.exy .exm{font-size:.86rem;background:var(--soft);border-left:3px solid var(--sun);padding:6px 10px}
 .exy .lab{font-size:.76rem;font-weight:700;color:var(--muted);margin-bottom:2px}
 .qchips{display:flex;flex-wrap:wrap;gap:6px}
 .qchips span{font-size:.82rem;background:var(--soft);border-radius:3px;padding:2px 8px}
@@ -425,12 +426,12 @@ body{font-size:16px;line-height:1.8}
 /* 질문과 답: Q·A 표시를 붙이고, 답은 옅은 칸에 넣어 한 쌍으로 보이게 */
 .qa{gap:16px}
 .qa>div{display:grid;gap:6px}
-.q,.a{position:relative;padding-left:32px}
-.q{font-size:1rem;line-height:1.6}
-.a{font-size:.96rem;line-height:1.8;margin-top:0;border-left:0;background:var(--soft);border-radius:4px;padding:9px 14px 9px 42px}
-.q::before,.a::before{position:absolute;left:0;top:.2em;width:22px;height:22px;border-radius:4px;display:grid;place-items:center;font-size:.74rem;font-weight:800;line-height:1}
-.q::before{content:"Q";background:var(--band);color:var(--on-band)}
-.a::before{content:"A";left:10px;top:10px;background:var(--sun);color:var(--on-sun)}
+.qa .q,.qa .a{position:relative;padding-left:32px}
+.qa .q{font-size:1rem;line-height:1.6}
+.qa .a{font-size:.96rem;line-height:1.8;margin-top:0;border-left:0;background:var(--soft);border-radius:4px;padding:9px 14px 9px 42px}
+.qa .q::before,.qa .a::before{position:absolute;left:0;top:.2em;width:22px;height:22px;border-radius:4px;display:grid;place-items:center;font-size:.74rem;font-weight:800;line-height:1}
+.qa .q::before{content:"Q";background:var(--band);color:var(--on-band)}
+.qa .a::before{content:"A";left:10px;top:10px;background:var(--sun);color:var(--on-sun)}
 
 /* ===== 닫힌 카드에서도 문제 한 줄 미리 보기 ===== */
 .card .pv{grid-column:1/-1;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;font-size:.9rem;color:var(--ink);line-height:1.6;margin-top:2px}

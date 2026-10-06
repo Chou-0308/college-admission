@@ -39,6 +39,7 @@
   $('#exlist').innerHTML=order.map(u=>`<div class="exu" id="${id(u)}"><h3>${esc(u)}</h3>${
     EX.filter(e=>e.u===u).map(e=>`<div class="exy">
       <div class="yh">${esc(e.y)} <span class="gtag">${esc(e.kind)}</span></div>
+      ${e.memo?`<p class="exm">${esc(e.memo)}</p>`:''}
       ${e.items.length?`<div><div class="lab">${lab[e.kind]||'문제'}</div><ul>${e.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:''}
       ${e.img&&e.img.length?`<div><div class="lab">이미지 분석·제시 이미지</div><ul>${e.img.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:''}
       ${e.qs&&e.qs.length?`<div><div class="lab">그때 나온 면접 질문</div><div class="qchips">${e.qs.map(q=>`<span>${esc(q)}</span>`).join('')}</div></div>`:''}

@@ -5,6 +5,10 @@ const GRPS=["미디어·언론·방송","영화·영상·방송제작","광고·
 // 전형: 원문의 '학생부교과(표기)' 같은 표기는 묶어서 봅니다
 const TRACKS=["학생부종합","학생부교과","실기","기타"];
 const track=r=>r.y.replace(/\(표기\)/,'');
+// 4년제 탭은 4년제 후기만, 전문대 탭(jeonmun/hugi.html)은 전문대 후기만
+if(typeof D!=='undefined')scopeArr(D,r=>r.u);
+if(typeof NOTES!=='undefined')scopeObj(NOTES);
+if(typeof NOTES27!=='undefined')scopeObj(NOTES27);
 const V=typeof D!=='undefined'?D.filter(r=>!r.x):[];
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));

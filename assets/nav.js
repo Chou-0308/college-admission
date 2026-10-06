@@ -2,7 +2,7 @@
 // ▶ 계열이나 페이지를 추가하면 SITE만 고치면 됩니다. 준비 중인 계열은 soon:true
 // ▶ 같은 계열이라도 학종(면접)과 실기는 폴더를 나눕니다: media/ = 학종·면접, silgi/ = 실기, jeonmun/ = 전문대 면접
 const SITE=[
- {name:"미디어·영상 · 학종·면접",dir:"media/",pages:[
+ {name:"(4년제) 미디어·영상 · 학종·면접",dir:"media/",pages:[
   ["index.html","개요"],
   ["schedule.html","2027 면접 일정"],
   ["special.html","특성화고 전형"],
@@ -12,7 +12,7 @@ const SITE=[
   ["reviews.html","후기 전체"],
   ["prep.html","준비법·공식 자료"],
  ]},
- {name:"영화·영상 · 실기",dir:"silgi/",pages:[
+ {name:"(4년제) 영화·영상 · 실기",dir:"silgi/",pages:[
   ["index.html","개요"],
   ["types.html","대학별 실기 유형"],
   ["exams.html","기출·연습 문제"],
@@ -22,7 +22,7 @@ const SITE=[
   ["glossary.html","용어 사전"],
   ["history.html","영화사"],
  ]},
- {name:"미디어·영상 · 전문대 면접",dir:"jeonmun/",pages:[
+ {name:"(전문대) 미디어·영상 면접",dir:"jeonmun/",pages:[
   ["index.html","개요"],
   ["table.html","면접 전형표"],
   ["questions.html","면접 문항"],

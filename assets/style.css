@@ -545,3 +545,4 @@ h1{font-size:clamp(1.7rem,3.6vw,2.3rem)}
 .qb .prep b{display:block;font-size:.78rem;color:var(--muted);margin-bottom:2px}
 .qb .prep ul{margin:0;padding-left:1.1em}
 #ts td:nth-child(2),#tu td:nth-child(-n+2){white-space:nowrap}
+.side-gt{word-break:keep-all}

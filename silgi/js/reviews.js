@@ -32,10 +32,12 @@ function render(){
   $('#cnt').textContent=`${res.length}건`;
   const open=!!(st.q||st.u||st.p)&&res.length<=8;
   $('#list').innerHTML=res.length?res.map(r=>{
+    const nq=r.qa.filter(x=>x[1]).length;
     const sub=[r.d,[r.t,r.st].filter(Boolean).join(' '),r.w?`${r.w} 희망`:''].filter(Boolean).join(' · ');
     return `<details class="card s${r.src==='자가진단'?' old':''}"${open?' open':''}>
       <summary><span class="t1">${esc(r.u)} <span class="d">${esc(sub)}</span></span><span class="no">${esc(yrLabel(r.y))}</span>
-        <span class="meta"><span class="tag">${esc(r.src)}</span>${r.k.map(k=>`<span class="gtag">${esc(k)}</span>`).join('')}${r.r?`<span class="gtag k-old">${esc(r.r)}</span>`:''}${r.s?`<span>수험생 ${r.s}</span>`:''}</span></summary>
+        <span class="meta"><span class="tag">${esc(r.src)}</span>${r.k.map(k=>`<span class="gtag">${esc(k)}</span>`).join('')}${r.r?`<span class="gtag k-old">${esc(r.r)}</span>`:''}${r.s?`<span>수험생 ${r.s}</span>`:''}${nq?`<span class="qn">질문 ${nq}개</span>`:''}</span>
+        ${r.p?`<span class="pv"><b>문제</b>${hl(r.p)}</span>`:''}</summary>
       <div class="body">
         ${r.pr?`<div class="rvs"><div class="rvh">진행·분위기</div><p class="para">${hl(r.pr)}</p></div>`:''}
         ${r.p?`<div class="proc">문제·제시 자료 · ${hl(r.p)}</div>`:''}

@@ -431,3 +431,20 @@ body{font-size:16px;line-height:1.8}
 .q::before,.a::before{position:absolute;left:0;top:.2em;width:22px;height:22px;border-radius:4px;display:grid;place-items:center;font-size:.74rem;font-weight:800;line-height:1}
 .q::before{content:"Q";background:var(--band);color:var(--on-band)}
 .a::before{content:"A";left:10px;top:10px;background:var(--sun);color:var(--on-sun)}
+
+/* ===== 닫힌 카드에서도 문제 한 줄 미리 보기 ===== */
+.card .pv{grid-column:1/-1;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;font-size:.9rem;color:var(--ink);line-height:1.6;margin-top:2px}
+.card .pv b{display:inline-block;font-size:.72rem;font-weight:800;color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:0 5px;margin-right:8px;vertical-align:.1em;line-height:1.5}
+.card[open] .pv{display:none}
+.card .qn{font-variant-numeric:tabular-nums}
+@media (max-width:640px){.card .pv{-webkit-line-clamp:2}}
+
+/* ===== 왼쪽 메뉴: 다른 전형은 접어 두기 ===== */
+.side-grp.fold{margin-bottom:10px}
+.side-grp.fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px}
+.side-grp.fold>summary::-webkit-details-marker{display:none}
+.side-grp.fold>summary::before{content:"";width:0;height:0;border-left:5px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .15s}
+.side-grp.fold[open]>summary::before{transform:rotate(90deg)}
+.side-grp.fold>summary:hover{color:var(--sun)}
+.side-grp.fold>summary:focus-visible{outline:2px solid var(--sun);outline-offset:1px}
+.side-n{margin-left:auto;font-size:.7rem;font-weight:500;border:1px solid rgba(255,255,255,.3);border-radius:3px;padding:0 5px}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>미디어·영상 · 전문대 면접</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=20261006l">
+</head>
+<body>
+<div class="wrap shell">
+<aside class="side" id="side" data-root="../" aria-label="페이지 이동"></aside>
+<script src="../assets/nav.js?v=20261006l"></script>
+<main class="main">
+<div class="pagehead"><span class="ph-grp">대입 자료실</span><p class="ph-title">미디어·영상 · 전문대 면접</p><span class="ph-blk" aria-hidden="true"></span></div>
+
+<header class="read">
+  <p class="eyebrow">2027학년도 전문대학 수시 · 면접 전형</p>
+  <h1>전문대 미디어·영상 계열 면접</h1>
+  <p class="lede">전문대학의 영화·영상, 방송·음향, 광고, 디지털콘텐츠, 애니·게임·웹툰 학과 가운데 <b>면접을 보는 전형</b>을 모았습니다. 학과별 면접 반영 비율과 모집인원, 2026학년도 기출 문항과 2027학년도 예상 문항을 봅니다.</p>
+</header>
+
+<div class="trackbox read"><b>‘공식 확인’과 ‘제공 자료’를 구분해 표시합니다.</b> 제공받은 자료를 대학 모집요강과 입학처 공개 자료로 하나씩 대조하고 있습니다. 대조해 보니 모집인원이 <b>면접 전형만의 인원이 아니라 일반전형 전체 인원</b>으로 적혀 있거나 지난해 값인 경우가 있었습니다(예: 한국영상대). 대조를 마친 대학은 공식 값으로 고쳤고 <span class="ck ck-o">공식 확인</span>으로, 아직 대조하지 못한 대학은 <span class="ck ck-s">제공 자료</span>로 표시합니다.</div>
+
+<div class="strip" id="strip"></div>
+
+<section id="sched">
+  <div class="read">
+    <h2>2026년 면접 일정 (공식 확인한 대학)</h2>
+    <p class="sec-sub">대학 모집요강에서 확인한 날짜입니다. 개인별 면접 시간은 원서 접수 뒤 입학처에서 따로 발표하니 꼭 확인하세요. 면접이 모두 끝난 일정은 흐리게 표시됩니다(이 화면을 연 날짜 기준).</p>
+  </div>
+  <div class="tbl"><table id="ts"></table></div>
+</section>
+
+<section class="read" id="findings">
+  <h2>핵심 정리</h2>
+  <p class="sec-sub">문항 전체를 질문 유형으로 묶어 보고, 공식 자료에서 확인한 면접 방식을 추렸습니다.</p>
+  <div class="find"><ul>
+    <li><span class="k">많이 묻는 것</span><div><p id="f-top"></p><p>실기 위주 4년제 영화과처럼 작품 분석을 깊게 묻기보다, <b>지원 동기, 나에 대한 소개, 입학 후 계획, 졸업 후 진로</b>를 묻는 비중이 큽니다. 이 네 가지는 1분 안팎으로 답을 만들어 두세요. <a href="questions.html">면접 문항 →</a></p></div></li>
+    <li><span class="k">평가 영역</span><div><p>한국영상대는 면접을 <b>인성/품성, 언행/예절, 적성/학구열, 수학계획</b> 네 영역에서 영역별로 1문항씩, 10분 안팎으로 묻고 지난해 문항을 영역별로 공개합니다. 다른 대학도 질문은 대부분 이 네 가지 가운데 하나에 들어갑니다.</p></div></li>
+    <li><span class="k">면접 비율</span><div><p id="f-w"></p><p>같은 학과라도 전형(일반고·특성화고·대학자체기준 등)과 모집 시기에 따라 인원이 다릅니다. <a href="table.html">면접 전형표 →</a></p></div></li>
+    <li><span class="k">포트폴리오</span><div><p>게임·웹툰 계열은 면접 날 포트폴리오를 가져오라는 경우가 많습니다(한국영상대 게임콘텐츠·웹툰 계열은 필수, A4 20쪽 안팎). 포트폴리오가 있으면 ‘가장 자신 있는 작품’과 ‘만들며 어려웠던 점’을 묻는 문항이 이어집니다.</p></div></li>
+    <li><span class="k">학교를 알고 가기</span><div><p>‘우리 학과에서 무엇을 배운다고 생각하나’, ‘학과 홈페이지에 가 봤나’, ‘교육과정에서 기대되는 과목은’ 같은 문항이 여러 대학에서 나옵니다. 지원 학과 홈페이지의 <b>교육과정과 졸업 후 진로</b>를 미리 읽고 가세요.</p></div></li>
+  </ul></div>
+</section>
+
+<section id="colleges">
+  <div class="read">
+    <h2>대학별 한눈에 보기</h2>
+    <p class="sec-sub">미디어·영상 계열 모집단위만 셌습니다. 대학 이름을 누르면 그 대학의 전형표로, 문항 수를 누르면 문항으로 갑니다.</p>
+  </div>
+  <div class="tbl"><table id="tu"></table></div>
+</section>
+
+<section id="pages">
+  <div class="read">
+    <h2>세부 페이지</h2>
+  </div>
+  <div class="cards">
+    <a class="cardlink" href="table.html"><h3>면접 전형표</h3><p>대학·모집단위·시기·전형별 모집인원과 반영 비율(학생부·면접). 계열, 대학, 면접 비율로 거르기.</p></a>
+    <a class="cardlink" href="questions.html"><h3>면접 문항</h3><p>2026학년도 기출과 2027학년도 예상 문항. 대학·학과·질문 유형으로 거르고, 한 문항씩 뽑아 연습.</p></a>
+  </div>
+</section>
+
+</main>
+</div>
+<script src="data/jm.js?v=20261006l"></script>
+<script src="jm.js?v=20261006l"></script>
+<script src="js/overview.js?v=20261006l"></script>
+</body>
+</html>

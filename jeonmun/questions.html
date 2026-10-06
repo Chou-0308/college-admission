@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>면접 문항 · 전문대 면접</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=20261006l">
+</head>
+<body>
+<div class="wrap shell">
+<aside class="side" id="side" data-root="../" aria-label="페이지 이동"></aside>
+<script src="../assets/nav.js?v=20261006l"></script>
+<main class="main">
+<div class="pagehead"><span class="ph-grp">미디어·영상 · 전문대 면접</span><p class="ph-title">면접 문항</p><span class="ph-blk" aria-hidden="true"></span></div>
+
+<header class="read">
+  <p class="eyebrow">2026학년도 기출 · 2027학년도 예상 문항</p>
+  <h1>학과별 면접 문항</h1>
+  <p class="lede">대학이 공개한 <b>2026학년도 기출 문항</b>과 <b>2027학년도 예상 문항</b>을 학과별로 모았습니다. 질문 유형으로 거르거나, 아래에서 한 문항씩 뽑아 1분 답하기를 연습하세요.</p>
+</header>
+
+<div class="trackbox read"><b>문항은 원문 그대로 옮겼습니다.</b> 명백한 오탈자(예: ‘설맹’→‘설명’)와 줄 바꿈으로 끊긴 낱말만 바로잡았습니다. 한국영상대는 입학처가 공개한 학과별 기출 문항(PDF)에서 직접 옮겨 <b>평가 영역</b>(인성/품성, 언행/예절, 적성/학구열, 수학계획)도 함께 적었습니다. ‘준비 포인트’는 질문이 아니라 대학이 안내한 면접 준비 사항입니다.</div>
+
+<section id="practice">
+  <div class="read">
+    <h2>한 문항 뽑아 연습하기</h2>
+    <p class="sec-sub">아래 목록에서 거른 조건 안에서 뽑습니다. 결론 한 문장 → 이유나 경험 하나 → 학과와 연결하는 한 문장, 1분 안팎이면 충분합니다.</p>
+  </div>
+  <div class="gen" aria-live="polite">
+    <div class="prompt" id="pp">문항을 뽑으세요</div>
+    <p class="rule" id="pr"></p>
+    <div class="ctrl">
+      <button type="button" class="btn" id="pick">문항 뽑기</button>
+      <button type="button" class="btn ghost" id="tgo" disabled>1분 타이머</button>
+      <span class="timer" id="tm" role="timer" aria-label="남은 시간">--:--</span>
+    </div>
+  </div>
+</section>
+
+<section id="list">
+  <div class="tools">
+    <div class="row">
+      <input type="search" id="q" aria-label="문항 검색" placeholder="문항·학과 검색 (예: AI, 포트폴리오, 갈등)">
+      <select id="fu" aria-label="대학"></select>
+      <select id="fk" aria-label="종류"></select>
+      <select id="fc" aria-label="질문 유형"></select>
+      <button type="button" class="clear" id="clr">처음으로</button>
+    </div>
+    <div class="row">
+      <div class="seg" id="fg" role="group" aria-label="계열"></div>
+      <span class="count" id="cnt"></span>
+    </div>
+  </div>
+  <div class="list" id="out"></div>
+</section>
+
+</main>
+</div>
+<script src="data/jm.js?v=20261006l"></script>
+<script src="jm.js?v=20261006l"></script>
+<script src="js/questions.js?v=20261006l"></script>
+</body>
+</html>

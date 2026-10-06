@@ -350,6 +350,8 @@ footer{border-top:3px solid var(--accent)}
 .exy .yh{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-weight:700}
 .exy ul{margin:0;padding-left:1.1em;display:grid;gap:4px;font-size:.9rem}
 .exy .exm{font-size:.86rem;background:var(--soft);border-left:3px solid var(--sun);padding:6px 10px}
+.exy .exl{font-size:.92rem;margin:0}
+.exy .exl a{color:var(--accent);font-weight:700}
 .exy .lab{font-size:.76rem;font-weight:700;color:var(--muted);margin-bottom:2px}
 .qchips{display:flex;flex-wrap:wrap;gap:6px}
 .qchips span{font-size:.82rem;background:var(--soft);border-radius:3px;padding:2px 8px}

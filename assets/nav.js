@@ -36,8 +36,10 @@ const SITE=[
   h+=SITE.map(g=>{
     if(g.soon)return `<div class="side-grp soon"><span class="side-gt">${g.name}</span><span class="side-soon">준비 중</span></div>`;
     const cur=!isHub&&dir===g.dir;
-    return `<div class="side-grp${cur?' cur':''}"><a class="side-gt" href="${root}${g.dir}">${g.name}</a><ul>${
-      g.pages.map(([f,t])=>`<li><a href="${root}${g.dir}${f}"${cur&&f===file?' aria-current="page"':''}>${t}</a></li>`).join('')}</ul></div>`;
+    const list=`<ul>${g.pages.map(([f,t])=>`<li><a href="${root}${g.dir}${f}"${cur&&f===file?' aria-current="page"':''}>${t}</a></li>`).join('')}</ul>`;
+    // 세부 페이지에서는 지금 보는 전형만 펼치고, 다른 전형은 이름만 보이게 접어 둡니다(누르면 펼쳐짐)
+    if(!isHub&&!cur)return `<details class="side-grp fold"><summary class="side-gt">${g.name}<span class="side-n">${g.pages.length}</span></summary>${list}</details>`;
+    return `<div class="side-grp${cur?' cur':''}"><a class="side-gt" href="${root}${g.dir}">${g.name}</a>${list}</div>`;
   }).join('');
   side.innerHTML=h;
   // 모바일 가로 메뉴에서 현재 탭이 보이도록

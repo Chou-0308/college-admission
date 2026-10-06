@@ -24,7 +24,7 @@
       ${m.note?`<p class="small">${esc(m.note)}</p>`:''}
       ${src?`<p class="small">출처: ${src}</p>`:''}
       <div class="tbl"><table><thead><tr><th>모집단위</th><th>시기</th><th>전형</th><th>학제</th><th>인원</th><th>반영 비율</th></tr></thead><tbody>${
-        rows.map(r=>`<tr><td>${esc(r[2])}<br><span class="small">${esc(r[1])}</span></td><td>${esc(r[3])}</td><td>${tn(r)}</td><td class="n">${r[6]?r[6]+'년':''}</td><td class="n">${r[7]==null?'—':r[7]+'명'}</td><td>${wbar(r)}</td></tr>`).join('')}</tbody></table></div>
+        rows.map(r=>`<tr><td>${esc(r[2])}<br><span class="small">${esc(r[1])}</span></td><td>${esc(r[3])}</td><td>${tn(r)}</td><td class="n">${r[6]?r[6]+'년':''}</td><td class="n">${r[7]==null?'제한 없음':r[7]+'명'}</td><td>${wbar(r)}</td></tr>`).join('')}</tbody></table></div>
     </section>`;
   }
   function render(){

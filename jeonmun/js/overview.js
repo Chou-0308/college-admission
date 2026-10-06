@@ -5,6 +5,9 @@
   const cell=(v,u,l)=>`<div><div class="v">${v}<small style="font-size:.5em;margin-left:2px">${u}</small></div><div class="l">${l}</div></div>`;
   $('#strip').innerHTML=cell(JU.length,'곳','전문대학')+cell(units.size,'개','모집단위(면접 전형)')+cell(JQ.filter(q=>q[3]!=='준비 포인트').length,'개','면접 문항')+cell(nO,'곳','공식 자료로 대조');
 
+  const oT=JU.filter(u=>u.ckT==='o').map(u=>u.u), oQ=JU.filter(u=>u.ckQ==='o').map(u=>u.u);
+  $('#cklist').innerHTML=`지금까지 전형을 대조한 대학: ${oT.map(esc).join(', ')}. 문항을 공식 자료와 대조한 대학: ${oQ.map(esc).join(', ')}.`;
+
   // ---- 면접 일정 (공식 확인한 대학만) ----
   const ord=JU.filter(u=>u.iv).sort((a,b)=>a.iv.first.localeCompare(b.iv.first));
   $('#ts').innerHTML=ord.length?`<thead><tr><th>첫 면접일</th><th>대학</th><th>일정</th><th>방식</th></tr></thead><tbody>${

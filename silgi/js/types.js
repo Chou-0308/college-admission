@@ -6,8 +6,14 @@
   const id=n=>'s-'+encodeURIComponent(n).replace(/%/g,'');
   const oldYr=s=>!/202[2-9]/.test(s.yr);
 
-  $('#tg').innerHTML=`<thead><tr><th>대학</th><th>모집단위</th><th>실기 유형</th><th>시간</th><th>복기</th></tr></thead><tbody>${
-    SCH.map(s=>`<tr><td><a href="#${id(s.n)}" data-open="${esc(s.n)}">${esc(s.n)}</a></td><td>${esc(s.d)}</td><td><span class="chips">${s.g.map(g=>`<span class="gtag">${esc(g)}</span>`).join('')}</span></td><td>${esc(s.time||'—')}</td><td class="n">${cnt(s.n)||''}</td></tr>`).join('')}</tbody>`;
+  $('#tg').innerHTML=`<thead><tr><th>대학</th><th>모집단위</th><th>실기 유형</th><th>2026년 시험</th><th>시간</th><th>복기</th></tr></thead><tbody>${
+    SCH.map(s=>`<tr><td><a href="#${id(s.n)}" data-open="${esc(s.n)}">${esc(s.n)}</a></td><td>${esc(s.d)}</td><td><span class="chips">${s.g.map(g=>`<span class="gtag">${esc(g)}</span>`).join('')}</span></td><td>${s.y27?esc(s.y27.rows[0][1]):''}</td><td>${esc(s.time||'—')}</td><td class="n">${cnt(s.n)||''}</td></tr>`).join('')}</tbody>`;
+
+  // 2026년 시험 일정: 첫 시험일 순. 마지막 시험일이 지난 대학은 흐리게, 시험 기간 중이면 '진행 중'
+  const today=new Date().toISOString().slice(0,10);
+  const ord=SCH.filter(s=>s.y27).slice().sort((a,b)=>a.y27.first.localeCompare(b.y27.first));
+  $('#ts').innerHTML=`<thead><tr><th>첫 시험일</th><th>대학</th><th>모집단위</th><th>일정</th></tr></thead><tbody>${
+    ord.map(s=>`<tr${s.y27.last<today?' class="past"':''}><td class="n">${esc(s.y27.first.slice(5).replace('-','.'))}${s.y27.last<today?'<br><span class="small">끝남</span>':s.y27.first<=today?'<br><span class="gtag">진행 중</span>':''}</td><td><a href="#${id(s.n)}" data-open="${esc(s.n)}">${esc(s.n)}</a></td><td>${esc(s.d)}</td><td>${s.y27.rows.map(([k,v])=>`<div><b>${esc(k)}</b> ${esc(v)}</div>`).join('')}</td></tr>`).join('')}</tbody>`;
 
   const groups=[...new Set(SCH.flatMap(s=>s.g))];
   let cur='';
@@ -22,6 +28,9 @@
       <summary><span class="t1">${esc(s.n)} <span class="d">${esc(s.d)}</span></span><span class="no">${esc(s.yr)}</span>
         <span class="meta">${s.g.map(g=>`<span class="gtag">${esc(g)}</span>`).join('')}${oldYr(s)?'<span class="gtag k-old">오래된 자료</span>':''}${n?`<span>복기 ${n}건</span>`:''}</span></summary>
       <div class="body">
+        ${s.y27?`<div class="y27"><div class="rvh">2027학년도 · 2026년 시험 (공식)</div>
+          <dl>${s.y27.rows.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
+          <p class="y27h">${esc(s.y27.how)}</p><p class="small">출처: ${esc(s.y27.src)}</p></div>`:''}
         <ol class="steps">${s.steps.map(([a,b])=>`<li><b>${esc(a)}</b><span>${esc(b)}</span></li>`).join('')}</ol>
         <div class="facts">${facts.map(([a,b])=>`<div><span>${a}</span>${esc(b)}</div>`).join('')}</div>
         ${s.rule?`<div class="proc">유의사항 · ${esc(s.rule)}</div>`:''}

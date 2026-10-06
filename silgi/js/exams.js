@@ -15,7 +15,7 @@
   $('#pf').addEventListener('click',e=>{const b=e.target.closest('button');if(b)choose(b.dataset.v)});
   $('#pick').onclick=()=>{
     const P=PRACTICE[fmt];let words;
-    // 한예종식은 실제 시험처럼 키워드 11개를 모두 보여 줌
+    // 한예종식은 실제 시험처럼 키워드 12개를 모두 보여 줌
     let i;do{i=Math.floor(Math.random()*P.sets.length)}while(P.sets.length>1&&i===last);last=i;words=P.sets[i];
     $('#pp').innerHTML=fmt==='daejin'?`<ol class="pq">${words.map(w=>`<li>${esc(w)}</li>`).join('')}</ol>`
       :fmt==='dongbang'?`<span class="small">사진 설명</span><br>${esc(words[0])}`

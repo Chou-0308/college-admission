@@ -59,3 +59,34 @@ const SITE=[
     sync()});
   sync();document.body.appendChild(box);
 })();
+
+// 긴 페이지: 섹션이 3개 이상이면 위에 붙는 '이 페이지에서' 바로가기를 만들고, 지금 읽는 섹션을 표시합니다
+// 본문에 이미 바로가기(.jump)가 있으면 그 이름을 그대로 쓰고, 없으면 섹션 제목(h2)을 씁니다
+document.addEventListener('DOMContentLoaded',function(){
+  const main=document.querySelector('.main');if(!main||!document.querySelector('.pagehead'))return;
+  const jump=main.querySelector('.jump');
+  let items=jump?[...jump.querySelectorAll('a[href^="#"]')].map(a=>[a.getAttribute('href').slice(1),a.textContent.trim()])
+    :[...main.querySelectorAll('section[id]')].map(s=>{const h=s.querySelector('h2');return h?[s.id,h.textContent.trim()]:null}).filter(Boolean);
+  items=items.filter(([id])=>document.getElementById(id));
+  if(items.length<3)return;
+  const nav=document.createElement('nav');nav.className='toc';nav.setAttribute('aria-label','이 페이지에서');
+  nav.innerHTML='<span class="toc-l">이 페이지에서</span><ol>'+items.map(([id,t])=>`<li><a href="#${id}">${t}</a></li>`).join('')+'</ol>';
+  // 본문 바로가기가 있던 머리말 바로 뒤, 없으면 첫 섹션 바로 앞에 둡니다
+  if(jump)(jump.closest('header')||jump).after(nav);else document.getElementById(items[0][0]).before(nav);
+  const ol=nav.querySelector('ol');
+  document.body.classList.add('has-toc');
+  const links=[...nav.querySelectorAll('a')],secs=items.map(([id])=>document.getElementById(id));
+  const top=document.createElement('button');top.type='button';top.className='totop';top.textContent='↑ 맨 위로';top.hidden=true;
+  top.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});document.body.appendChild(top);
+  let ticking=false;
+  const spy=()=>{ticking=false;
+    const y=nav.getBoundingClientRect().bottom+24;let cur=-1;
+    secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<=y)cur=i});
+    if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)cur=secs.length-1;
+    links.forEach((a,i)=>{if(i===cur){if(a.getAttribute('aria-current')!=='true'){a.setAttribute('aria-current','true');
+      // 좁은 화면에서 지금 섹션 단추가 가려지면 가로로만 밀어 보여 줍니다
+      const l=a.offsetLeft-ol.offsetLeft;if(l<ol.scrollLeft||l+a.offsetWidth>ol.scrollLeft+ol.clientWidth)ol.scrollLeft=l-16}}else a.removeAttribute('aria-current')});
+    top.hidden=scrollY<innerHeight*1.5};
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(spy)}},{passive:true});
+  spy();
+});

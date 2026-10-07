@@ -10,6 +10,9 @@ const SCOPE=document.documentElement.dataset.scope==='jm'?'jm':'4';
 const scopeArr=(a,f)=>{if(!Array.isArray(a))return;for(let i=a.length-1;i>=0;i--)if(isJM(f(a[i]))!==(SCOPE==='jm'))a.splice(i,1)};
 const scopeObj=o=>{if(o&&typeof o==='object')Object.keys(o).forEach(k=>{if(isJM(k)!==(SCOPE==='jm'))delete o[k]})};
 const SITE=[
+ {name:"공통 · 면접 준비",dir:"guide/",pages:[
+  ["index.html","면접 준비 나침반"],
+ ]},
  {name:"(4년제) 미디어·영상 · 학종·면접",dir:"media/",pages:[
   ["index.html","개요"],
   ["schedule.html","2027 면접 일정"],

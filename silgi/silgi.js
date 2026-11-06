@@ -4,6 +4,8 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",
 // 4년제 탭(silgi/)은 4년제 대학만, 전문대 탭(jeonmun/silgi*.html)은 전문대만 남깁니다
 if(typeof SCH!=='undefined')scopeArr(SCH,s=>s.n);
 if(typeof SCH17!=='undefined')scopeArr(SCH17,r=>r[0]);
+// 같은 수험생 기호가 다른 탭(4년제↔전문대)에도 있는지: 거르기 전에 기억해 두고 복기 카드에서 그쪽으로 잇습니다
+const OTHER_P=new Set([...(typeof BK!=='undefined'?BK:[]),...(typeof JG!=='undefined'?JG:[])].filter(r=>r.s&&isJM(r.u)!==(SCOPE==='jm')).map(r=>r.s));
 if(typeof BK!=='undefined')scopeArr(BK,r=>r.u);
 if(typeof JG!=='undefined')scopeArr(JG,r=>r.u);
 if(typeof EX!=='undefined')scopeArr(EX,e=>e.u);

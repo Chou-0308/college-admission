@@ -38,7 +38,7 @@
   const id=n=>'s-'+encodeURIComponent(n).replace(/%/g,'');
   const order=[...new Set(EX.map(e=>e.u))];
   $('#jump').innerHTML=order.map(u=>`<a href="#${id(u)}">${esc(u)}</a>`).join('');
-  const lab={'작문':'제시어·문제','스토리텔링':'제시 사진','공개 문항':'공개 문항','이야기 구술':'제시 자료','영상 비평':'감상 영상','시나리오 분석':'제시 시나리오','장면 구성':'문제','구술':'문제','면접':''};
+  const lab={'작문':'제시어·문제','스토리텔링':'제시 사진','공개 문항':'공개 문항','이야기 구술':'제시 자료','영상 비평':'감상 영상','시나리오 분석':'제시 시나리오','대본 분석':'제시 대본','장면 구성':'문제','구술':'문제','면접':''};
   $('#exlist').innerHTML=order.map(u=>`<div class="exu" id="${id(u)}"><h3>${esc(u)}</h3>${
     EX.filter(e=>e.u===u).map(e=>`<div class="exy">
       <div class="yh">${esc(e.y)} <span class="gtag">${esc(e.kind)}</span></div>

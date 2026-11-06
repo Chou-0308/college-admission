@@ -1,5 +1,5 @@
 // 합격 복기 탐색기
-// 주소 뒤에 ?u=대학&k=실기유형&s=자료(합격 복기|자가진단)&p=수험생(A~G)&q=검색어 를 붙이면 필터가 걸린 채로 열립니다.
+// 주소 뒤에 ?u=대학&k=실기유형&s=자료(합격 복기|자가진단|복기(결과 미기재))&p=수험생(A~H)&q=검색어 를 붙이면 필터가 걸린 채로 열립니다.
 const st={q:'',u:'',k:'',s:'',p:''};
 (function(){
   const P=new URLSearchParams(location.search);
@@ -7,6 +7,10 @@ const st={q:'',u:'',k:'',s:'',p:''};
   const us=[...new Set(RECAPS.map(r=>r.u))].sort((a,b)=>a.localeCompare(b,'ko'));
   const ks=[...new Set(RECAPS.flatMap(r=>r.k))];
   const ps=[...new Set(RECAPS.map(r=>r.s).filter(Boolean))].sort();
+  // 자료 구분 버튼은 이 탭에 있는 자료로 만듭니다
+  const SRC=['합격 복기','복기(결과 미기재)','자가진단'];
+  const srcs=[...new Set(RECAPS.map(r=>r.src))].sort((a,b)=>(SRC.indexOf(a)+99)%99-(SRC.indexOf(b)+99)%99);
+  $('#fs').innerHTML=['',...srcs].map(v=>`<button type="button" data-v="${esc(v)}" aria-pressed="false">${v?esc(v):'전체'}</button>`).join('');
   $('#fu').innerHTML='<option value="">전체 대학</option>'+us.map(u=>`<option>${esc(u)}</option>`).join('');
   $('#fk').innerHTML='<option value="">전체 실기 유형</option>'+ks.map(k=>`<option>${esc(k)}</option>`).join('');
   $('#fp').innerHTML='<option value="">모든 수험생</option>'+ps.map(p=>`<option value="${p}">수험생 ${p} (${RECAPS.filter(r=>r.s===p).length}곳)</option>`).join('');
@@ -36,7 +40,7 @@ function render(){
     const sub=[r.d,[r.t,r.st].filter(Boolean).join(' '),r.w?`${r.w} 희망`:''].filter(Boolean).join(' · ');
     return `<details class="card s${r.src==='자가진단'?' old':''}"${open?' open':''}>
       <summary><span class="t1">${esc(r.u)} <span class="d">${esc(sub)}</span></span><span class="no">${esc(yrLabel(r.y))}</span>
-        <span class="meta"><span class="tag">${esc(r.src)}</span>${r.k.map(k=>`<span class="gtag">${esc(k)}</span>`).join('')}${r.r?`<span class="gtag k-old">${esc(r.r)}</span>`:''}${r.s?`<span>수험생 ${r.s}</span>`:''}${nq?`<span class="qn">질문 ${nq}개</span>`:''}</span>
+        <span class="meta"><span class="tag">${esc(r.src)}</span>${r.k.map(k=>`<span class="gtag">${esc(k)}</span>`).join('')}${r.r?`<span class="gtag k-old">${esc(r.r)}</span>`:''}${r.res?`<span class="pill p-${esc(r.res)}">${esc(r.res)}</span>`:''}${r.s?`<span>수험생 ${r.s}</span>`:''}${nq?`<span class="qn">질문 ${nq}개</span>`:''}</span>
         ${r.p?`<span class="pv"><b>문제</b>${hl(r.p)}</span>`:''}</summary>
       <div class="body">
         ${r.pr?`<div class="rvs"><div class="rvh">진행·분위기</div><p class="para">${hl(r.pr)}</p></div>`:''}
@@ -45,7 +49,7 @@ function render(){
         ${r.qa.length?`<div class="rvs"><div class="rvh">질문과 답 <span class="small">${r.qa.filter(x=>x[1]).length}개</span></div><div class="qa">${r.qa.map(x=>`<div><div class="q">${hl(x[0])}</div><div class="a">${hl(x[1])}</div></div>`).join('')}</div></div>`:''}
         ${arr(r.n).length?`<div class="rvs"><div class="rvh">소감·팁</div><ul class="tips">${arr(r.n).map(t=>`<li>${hl(t)}</li>`).join('')}</ul></div>`:''}
         ${arr(r.prep).length?`<div class="rvs"><div class="rvh">준비 기간·방법·조언</div><ul class="tips">${arr(r.prep).map(t=>`<li>${hl(t)}</li>`).join('')}</ul></div>`:''}
-        ${r.s&&!st.p?`<p class="small"><a href="?p=${r.s}" data-p="${r.s}">수험생 ${r.s}의 다른 대학 복기 보기 →</a></p>`:''}
+        ${r.s?`<p class="small">${!st.p&&RECAPS.filter(x=>x.s===r.s).length>1?`<a href="?p=${r.s}" data-p="${r.s}">수험생 ${r.s}의 다른 대학 복기 보기 →</a>`:''}${OTHER_P.has(r.s)?` <a href="${SCOPE==='jm'?'../silgi/reviews.html':'../jeonmun/silgi-reviews.html'}?p=${r.s}">${SCOPE==='jm'?'4년제':'전문대'} 탭의 수험생 ${r.s} 복기 →</a>`:''}</p>`:''}
       </div></details>`}).join(''):'<p class="count">조건에 맞는 복기가 없습니다.</p>';
 }
 render();

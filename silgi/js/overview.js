@@ -1,7 +1,7 @@
 // 실기 개요: 숫자 요약, 질문 유형 상위 3개, 면접후기 자료집(../media/data/reviews.js) 속 실기 전형 표
 (function(){
   // ---- 숫자 요약 ----
-  const nB=RECAPS.filter(r=>r.src==='합격 복기').length, nJ=RECAPS.length-nB;
+  const nB=RECAPS.filter(r=>r.src==='합격 복기').length, nJ=RECAPS.filter(r=>r.src==='자가진단').length;
   const nQ=EX.reduce((a,e)=>a+e.items.length+(e.img?e.img.length:0),0);
   const cell=(v,u,l)=>`<div><div class="v">${v}<small style="font-size:.5em;margin-left:2px">${u}</small></div><div class="l">${l}</div></div>`;
   $('#strip').innerHTML=cell(SCH.length,'곳','대학별 실기 유형')+cell(RECAPS.length,'건',`합격 복기 ${nB} · 자가진단 ${nJ}`)+cell(nQ,'개','기출 제시어·사진·문제')+cell(TERMS.length,'개','용어 사전');
